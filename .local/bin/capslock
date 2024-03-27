@@ -1,0 +1,11 @@
+#!/bin/bash
+
+xdotool key Caps_Lock
+
+state=$(xset -q | grep Caps | awk '{print $4}')
+
+if [[ $state == "off" ]]; then
+    bspc config focused_border_color \#425047
+else
+    bspc config focused_border_color \#e67e80
+fi

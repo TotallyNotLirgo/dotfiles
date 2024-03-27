@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if [[ $1 == "power" ]]
+then
+    yad \
+        --width=300 --height=70 \
+        --title "" \
+        --borders=5 \
+        --center \
+        --text-align=center --text="Select an option" \
+        --button="Cancel":0 \
+        --button="Reboot":1 \
+        --button="Shutdown":2
+    case $? in
+        1)
+            reboot
+            ;;
+        2)
+            poweroff
+            ;;
+    esac
+elif [[ $1 == "login" ]]
+then
+    yad \
+        --width=300 --height=70 \
+        --title "" \
+        --borders=5 \
+        --center \
+        --text-align=center --text="Select an option" \
+        --button="Cancel":0 \
+        --button="Lock Screen":1 \
+        --button="Log Out":2 
+    case $? in
+        1)
+            cinnamon-screensaver-command -l
+            ;;
+        2)
+            pkill -kill -u $USER
+            ;;
+    esac
+fi

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+INCREMENT=0.06
+DIRECTION=$1
+if [[ $DIRECTION != "up" && $DIRECTION != "down" ]]; then
+    echo "Wrong direction"
+    exit
+fi
+PREV_BRIGHTNESS=$(xrandr --verbose | grep Brightness | cut -d ':' -f2)
+
+function max() {
+    echo -e "$1\n$2" | sort -n | tail -1
+}
+function min() {
+    echo -e "$1\n$2" | sort -nr | tail -1
+}
+
+
+if [[ $DIRECTION == "up" ]]; then
+    BRIGHTNESS=$(min $(bc <<< "$PREV_BRIGHTNESS + $INCREMENT") 1)
+else
+    BRIGHTNESS=$(max 0$(bc <<< "$PREV_BRIGHTNESS - $INCREMENT") 0.4)
+fi
+
+xrandr --output DP-4 --brightness $BRIGHTNESS
+echo "New brightness level: $BRIGHTNESS"

@@ -1,0 +1,53 @@
+#!/bin/bash
+
+getdefaultsinkname() {
+    pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
+}
+
+getdefaultsinkvol() {
+    pacmd list-sinks |
+        awk '/^\s+name: /{indefault = $2 == "<'$(getdefaultsinkname)'>"}
+            /^\s+volume: / && indefault {print $5; exit}'
+
+}
+
+setdefaultsinkvol() {
+    pactl set-sink-volume $(getdefaultsinkname) $1%
+}
+
+toggledefaultsinkmute() {
+    pactl set-sink-mute $(getdefaultsinkname) toggle
+}
+
+case $1 in
+    get)
+        echo $(getdefaultsinkvol)
+        ;;
+    set)
+        if [[ -z $2 ]]; then
+            echo "provide value to set the volume to"
+        else
+            setdefaultsinkvol $2
+        fi
+        ;;
+    inc)
+        if [[ -z $2 ]]; then
+            echo "provide value to increment by"
+        else
+            setdefaultsinkvol $(($2+$(getdefaultsinkvol | sed 's/%//')))
+        fi
+        ;;
+    dec)
+        if [[ -z $2 ]]; then
+            echo "provide value to decrement by"
+        else
+            setdefaultsinkvol $(($(getdefaultsinkvol | sed 's/%//')-$2))
+        fi
+        ;;
+    tgl)
+        toggledefaultsinkmute
+        ;;
+    *)
+        echo "usage: $(basename $0) get/set/inc/dec/tgl"
+        ;;
+esac
