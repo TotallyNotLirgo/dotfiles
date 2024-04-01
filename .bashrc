@@ -145,7 +145,7 @@ alias p='python .'
 
 alias elmark-connect='
 pass show PaloAlto | (read p1; \
-    sudo vpnc-connect \
+    sudo vpnc \
         --gateway wes.vpn.elmark.com.pl \
         --id ElmarkVPN2023 \
         --secret Moxa2023 \
@@ -166,3 +166,8 @@ export PATH=$PATH:/usr/local/go/bin
 if [ -z "$TMUX" ]; then
     tmux
 fi
+
+function json-parse() {
+    read JSON
+    jq <<< $JSON
+}
