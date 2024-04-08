@@ -19,7 +19,15 @@ vim.o.expandtab = true
 vim.o.scrolloff = 8
 
 -- Enable mouse mode
-vim.o.mouse = ''
+vim.keymap.set({ 'n', 'v', 'i', 't' }, '<LeftMouse>', '<Nop>', { silent = true })
+vim.keymap.set({ 'n', 'v', 'i', 't' }, '<RightMouse>', '<Nop>', { silent = true })
+vim.keymap.set({ 'n', 'v', 'i', 't' }, '<MiddleMouse>', '<Nop>', { silent = true })
+vim.o.mouse = 'a'
+for i = 1, 5, 1 do
+    vim.keymap.set({ 'n', 'v', 'i', 't' }, '<' .. i .. '-LeftMouse>', '<Nop>', { silent = true })
+    vim.keymap.set({ 'n', 'v', 'i', 't' }, '<' .. i .. '-RightMouse>', '<Nop>', { silent = true })
+    vim.keymap.set({ 'n', 'v', 'i', 't' }, '<' .. i .. '-MiddleMouse>', '<Nop>', { silent = true })
+end
 
 -- Enable break indent
 vim.o.breakindent = true

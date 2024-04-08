@@ -14,8 +14,12 @@ return {
           section_separators = '',
         },
         sections = {
-          lualine_c = {get_file_path}
-        }
+          lualine_b = {  },
+          lualine_c = { get_file_path },
+          lualine_x = { "filetype" },
+          lualine_y = { },
+        },
+      extensions = { 'nvim-tree' }
     })
   end
 }

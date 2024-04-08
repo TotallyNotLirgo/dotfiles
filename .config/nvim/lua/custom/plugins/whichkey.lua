@@ -13,7 +13,6 @@ return {
       p = { name = '[P]roject...' },
       w = { name = '[W]iki...' },
       s = { name = '[S]earch...' },
-      r = { name = '[R]efactor...' }
     }, { prefix = '<leader>' })
 
     wk.register({

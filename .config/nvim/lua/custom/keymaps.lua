@@ -18,6 +18,8 @@ vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+vim.keymap.set("v", "<leader>y", [["+y]], { desc = '[Y]ank to system clipboard' })
+
 vim.keymap.set("v", "p", [["_dP]], { desc = '[P]aste without copying replaced' })
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = '[D]elete without copying' })
 
@@ -32,3 +34,4 @@ local function format()
 end
 vim.keymap.set('n', '<leader>f', format, { desc = 'Format with isort, black and docformatter' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<leader>r', ":LspRestart<CR>", { desc = 'Restart LSP' })

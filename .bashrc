@@ -137,6 +137,7 @@ function cdp() {
         parentdir="$(dirname "$VIRTUAL_ENV")"
         if [[ "$PWD"/ != "$parentdir"/* ]] ; then
             deactivate
+            cdp $@
         fi
     fi
 }
@@ -171,3 +172,7 @@ function json-parse() {
     read JSON
     jq <<< $JSON
 }
+
+alias ":q"="exit"
+alias ":wq"="exit"
+alias ":qa"="exit"
