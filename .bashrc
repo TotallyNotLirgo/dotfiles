@@ -30,11 +30,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -56,28 +51,25 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+RESET_COLOR="$(tput sgr0)"
+WHITE_COLOR="$(tput setaf 7)"
+BOLD_COLOR="$(tput bold)"
+BLUE_COLOR="$(tput setaf 12)"
+MAGENTAER_COLOR="$(tput setaf 129)"
+MAGENTA_COLOR="$(tput setaf 13)"
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # PS1='\[$(tput bold)\]\[$(tput setaf 1)\][ \[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 6)\]\h\[$(tput setaf 4)\]:\[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\$\[$(tput sgr0)\]'
+    PS1='\[${BOLD_COLOR}${MAGENTAER_COLOR}\]\u\[${WHITE_COLOR}\]@\[${MAGENTA_COLOR}\]\h\[${WHITE_COLOR}\]:\[${BLUE_COLOR}\]\w\[${WHITE_COLOR}\]\$ \[${RESET_COLOR}\]'
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -164,8 +156,13 @@ shopt -s autocd
 
 export PATH=$PATH:/usr/local/go/bin
 
-if [ -z "$TMUX" ]; then
-    tmux
+
+if [[ -z $DISPLAY && $(loginctl list-sessions | wc -l) -le 4 ]]; then
+    startx
+else
+    if [ -z "$TMUX" ]; then
+        tmux
+    fi
 fi
 
 function json-parse() {
@@ -176,3 +173,5 @@ function json-parse() {
 alias ":q"="exit"
 alias ":wq"="exit"
 alias ":qa"="exit"
+alias "s"="startx"
+

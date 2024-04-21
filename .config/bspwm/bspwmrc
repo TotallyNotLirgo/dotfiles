@@ -3,7 +3,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # bspc monitor -d I II III IV V
-DEFAULT_MONITOR="DP-4"
+DEFAULT_MONITOR="eDP-1"
 bspc wm -O $DEFAULT_MONITOR $(xrandr -q | grep " connected" | cut -d" " -f1 | grep -v $DEFAULT_MONITOR | tr "\n" " ")
 for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
     if [[ $m == $DEFAULT_MONITOR ]]; then
@@ -48,3 +48,5 @@ picom -b &
 /usr/bin/dunst &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # nm-applet --indicator &
+xsetroot -cursor_name left_ptr
+dbus-update-activation-environment DISPLAY

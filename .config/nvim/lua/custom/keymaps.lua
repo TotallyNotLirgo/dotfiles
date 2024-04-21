@@ -35,3 +35,6 @@ end
 vim.keymap.set('n', '<leader>f', format, { desc = 'Format with isort, black and docformatter' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>r', ":LspRestart<CR>", { desc = 'Restart LSP' })
+
+vim.keymap.set('n', '<leader>G', ':ma c<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>g', '`c', { noremap = true, silent = true })

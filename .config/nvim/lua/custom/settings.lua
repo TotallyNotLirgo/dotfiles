@@ -18,6 +18,9 @@ vim.o.expandtab = true
 -- lines between cursor and window edge
 vim.o.scrolloff = 8
 
+vim.keymap.set('n', '<F1>', '<Nop>', { silent = true })
+
+
 -- Enable mouse mode
 vim.keymap.set({ 'n', 'v', 'i', 't' }, '<LeftMouse>', '<Nop>', { silent = true })
 vim.keymap.set({ 'n', 'v', 'i', 't' }, '<RightMouse>', '<Nop>', { silent = true })

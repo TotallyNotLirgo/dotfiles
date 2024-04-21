@@ -32,6 +32,7 @@ return {
   { 'kylechui/nvim-surround', opts = {} },
   { 'folke/trouble.nvim', opts = {}, config = function()
     vim.keymap.set("n", "<f8>", "<cmd>TroubleToggle document_diagnostics<cr>", {silent = true, noremap = true})
+    vim.keymap.set("n", "<f9>", "<cmd>TroubleToggle workspace_diagnostics<cr>", {silent = true, noremap = true})
   end
   },
   {

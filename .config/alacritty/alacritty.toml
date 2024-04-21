@@ -23,7 +23,7 @@ cyan    = '#56b6c2'
 white   = '#ffffff'
 
 [font]
-size = 14.0
+size = 13.0
 
 [font.normal]
 family = "FiraMono Nerd Font"

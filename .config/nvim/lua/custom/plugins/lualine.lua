@@ -14,7 +14,7 @@ return {
           section_separators = '',
         },
         sections = {
-          lualine_b = {  },
+          lualine_b = { 'diagnostics' },
           lualine_c = { get_file_path },
           lualine_x = { "filetype" },
           lualine_y = { },
