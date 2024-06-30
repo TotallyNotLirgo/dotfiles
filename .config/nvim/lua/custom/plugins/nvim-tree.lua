@@ -13,6 +13,16 @@ return {
         ignore = false,
         timeout = 400,
       },
+      diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        show_on_open_dirs = false,
+        debounce_delay = 50,
+        severity = {
+          min = vim.diagnostic.severity.WARN,
+          max = vim.diagnostic.severity.ERROR,
+        },
+      },
     }
 
     vim.keymap.set({ "n", "v", "i" }, "<C-l>", function () vim.cmd("NvimTreeToggle") end)

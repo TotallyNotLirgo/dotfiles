@@ -28,13 +28,23 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = 'Mark file as e[x]ecutable' })
 vim.keymap.set("n", "<leader>X", "<cmd>!chmod -x %<CR>", { silent = true, desc = 'Mark file as non e[X]ecutable' })
 local function format()
-  vim.cmd(':silent !isort % --profile black --line-length 79')
-  vim.cmd(':silent !black -l 79 %')
-  vim.cmd(':silent !docformatter --in-place --pre-summary-newline %')
+  if vim.bo.filetype == 'python' then
+    vim.cmd(':silent !isort % --profile black --line-length 79')
+    vim.cmd(':silent !black -l 79 %')
+    vim.cmd(':silent !docformatter --in-place --pre-summary-newline %')
+  else
+    vim.cmd(':Format')
+  end
 end
 vim.keymap.set('n', '<leader>f', format, { desc = 'Format with isort, black and docformatter' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>r', ":LspRestart<CR>", { desc = 'Restart LSP' })
+local function restart_buffer()
+  -- save the line number
+  local line = vim.fn.line('.')
+  local file = vim.fn.expand('%')
+  return ":bdel<CR>:e " .. file .. "<CR>:" .. line .. "<CR>"
+end
+vim.keymap.set('n', '<leader>r', restart_buffer, { desc = 'Restart buffer', expr = true, silent = true })
 
 vim.keymap.set('n', '<leader>G', ':ma c<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>g', '`c', { noremap = true, silent = true })

@@ -45,8 +45,8 @@ return {
         }
   },
   {
-    'Pocco81/auto-save.nvim',
-    opts = {},
+    'nullishamy/autosave.nvim',
+    opts = { },
     lazy = false,
   },
   'github/copilot.vim'

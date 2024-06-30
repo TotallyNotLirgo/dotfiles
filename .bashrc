@@ -38,18 +38,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+color_prompt=yes
 
 RESET_COLOR="$(tput sgr0)"
 WHITE_COLOR="$(tput setaf 7)"
@@ -64,7 +53,7 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='\u@\h:\w\$ '
 fi
-unset color_prompt force_color_prompt
+unset color_prompt
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -110,10 +99,6 @@ fi
 
 
 PATH="$PATH:~/.local/bin"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
@@ -175,3 +160,4 @@ alias ":wq"="exit"
 alias ":qa"="exit"
 alias "s"="startx"
 
+alias nixc="env SUDO_EDITOR=$EDITOR sudoedit /etc/nixos/configuration.nix"
