@@ -13,9 +13,8 @@
         ".config/alacritty".source = dotfiles/alacritty;
         ".config/awesome".source = dotfiles/awesome;
         ".local/share/backgrounds".source = dotfiles/backgrounds;
-        ".config/dunst".source = dotfiles/dunst;
         ".config/nixos".source = dotfiles/nixos;
-        ".config/nvim".source = dotfiles/nvim;
+        # ".config/nvim".source = dotfiles/nvim;
         ".config/picom".source = dotfiles/picom;
         ".bashrc".source = dotfiles/.bashrc;
         ".tmux.conf".source = dotfiles/.tmux.conf;

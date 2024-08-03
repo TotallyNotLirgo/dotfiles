@@ -7,6 +7,7 @@ local gears = require("gears")
 
 local widget = wibox.widget.textbox('')
 local type = "duplicated"
+local display_mode = "single"
 widget.font = 'FiraCode Nerd Font Mono 12'
 
 local function wrap_icon(icon)
@@ -54,12 +55,33 @@ display_widget:connect_signal(
       if type == "duplicated" then
         type = "extended"
         widget.markup = build_textbox()
+        awful.spawn("autorandr --load work")
+        display_mode = "work\n"
       elseif type == "extended" then
         type = "duplicated"
         widget.markup = build_textbox()
+        awful.spawn("autorandr --load single")
+        display_mode = "single\n"
       end
     end
   end
 )
 widget.markup = build_textbox()
+
+awesome.connect_signal(
+  'signal::display',
+  function(_display_mode)
+    if _display_mode == display_mode then
+      return
+    end
+    display_mode = _display_mode
+    if display_mode == "work\n" then
+      type = "extended"
+    elseif display_mode == "single\n" then
+      type = "duplicated"
+    end
+    widget.markup = build_textbox()
+  end
+)
+
 return display_widget

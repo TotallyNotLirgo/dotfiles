@@ -59,6 +59,9 @@ awesome.connect_signal(
 awesome.connect_signal(
   'signal::network',
   function(_down, _up)
+    if _down == nil or _up == nil then
+      return
+    end
     up_int = _up * 1000
     down_int = _down * 1000
     up_b_mb_kb = up_int < 1024 and "B" or (up_int < 1048576 and "KiB" or "MiB")
