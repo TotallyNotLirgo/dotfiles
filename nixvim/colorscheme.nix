@@ -1,5 +1,0 @@
-{
-    colorschemes.onedark = {
-        enable = true;
-    };
-}

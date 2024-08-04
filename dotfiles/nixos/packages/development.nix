@@ -13,7 +13,6 @@ with pkgs; [
     python310
     jq # JSON processor
     alacritty # Terminal
-    neovim
     pgadmin4-desktopmode # PostgreSQL GUI
     mongodb-compass
 ]

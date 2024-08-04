@@ -11,24 +11,32 @@
           url = "github:Gerg-L/spicetify-nix";
           inputs.nixpkgs.follows = "nixpkgs";
       };
-      nixvim = {
-          url = "github:nix-community/nixvim";
-          inputs.nixpkgs.follows = "nixpkgs";
+      nvim-lazydev = {
+        url = "github:folke/lazydev.nvim";
+        flake = false;
+      };
+      nvim-luvit-meta = {
+        url = "github:Bilal2453/luvit-meta";
+        flake = false;
+      };
+      nvim-copilot = {
+        url = "github:github/copilot.vim";
+        flake = false;
       };
   };
 
-  outputs = { nixpkgs, home-manager, nixvim, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+      nixpkgs.config.allowUnfree = true;
       home-manager.backupFileExtension = ".backup";
       homeConfigurations."emilia" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = { inherit inputs; };
         modules = [
             ./home.nix
-            ./nixvim.nix
             ./spicetify.nix
         ];
       };
