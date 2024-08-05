@@ -32,6 +32,10 @@
                         name = "copilot";
                         src = inputs.nvim-copilot;
                     };
+                    git-ftFT = prev.vimUtils.buildVimPlugin {
+                        name = "ftFT";
+                        src = inputs.nvim-ftFT;
+                    };
                 };
             })
         ];

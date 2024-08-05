@@ -47,6 +47,9 @@
     lspkind-nvim
     conform-nvim
     lspsaga-nvim
+    trouble-nvim
+    lsp_lines-nvim
+    comment-nvim
     (
       nvim-treesitter.withPlugins (p: with p; [
         tree-sitter-nix
@@ -60,10 +63,11 @@
     git-lazydev
     git-luvit-meta
     git-copilot
+    git-ftFT
   ];
   extraPackages = with pkgs; [
     sumneko-lua-language-server
-    python311Packages.python-lsp-server
+    pyright
     python311Packages.black
     python311Packages.isort
     python311Packages.docformatter

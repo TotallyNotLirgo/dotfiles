@@ -1,5 +1,6 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<F8>', vim.diagnostic.setloclist, { desc = 'Open diagnostics' })
+vim.keymap.set("n", "<F9>", "<cmd>Trouble diagnostics<cr>", {silent = true, noremap = true})
 
 vim.keymap.set({ 'n', 'v' }, '<C-h>', '10h')
 vim.keymap.set({ 'n', 'v' }, '<C-j>', '10j')
@@ -32,3 +33,4 @@ vim.keymap.set({ "n" }, "<leader>X", ":!chmod -x %<CR>", { desc = "Make not e[X]
 
 vim.keymap.set({ "n" }, "gd", ":Lspsaga goto_definition<CR>", { desc = "[G]o to [D]efinition", })
 vim.keymap.set({ "n" }, "K", ":Lspsaga peek_definition<CR>")
+vim.keymap.set({ "n" }, "<leader>o", ":Lspsaga outline<CR>", { desc = "Open [O]utline", })

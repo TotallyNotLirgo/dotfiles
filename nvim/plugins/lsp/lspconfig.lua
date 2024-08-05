@@ -1,7 +1,7 @@
 require('fidget').setup({})
 require('cmp_nvim_lsp').setup()
 require('lazydev').setup({ library = { path = { path = "luvit-meta/library", words = { "vim%.uv" } } } })
-
+require('lsp_lines').setup()
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
     callback = function(event)
@@ -41,26 +41,38 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-local servers = {
-    lua_ls = { settings = { Lua = { completion = { callSnippet = 'Replace' } } } },
-    nixd = {},
-    pylsp = {
+vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = true,
+    }
+)
+
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+local lspconfig = require("lspconfig")
+lspconfig.lua_ls.setup {
+    settings = {
         settings = {
-            pylsp = {
-                configurationSources = { "flake8" },
-                plugins = {
-                    flake8 = { enabled = true },
-                    pycodestyle = { enabled = false },
-                    pyflakes = { enabled = false },
+            Lua = {
+                completion = {
+                    callSnippet = "Replace",
+                },
+            },
+        },
+    }
+}
+lspconfig.pyright.setup {
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "off",
+                diagnosticSeverityOverrides = {
+                    reportInvalidTypeForm = "none",
                 }
             }
         }
     }
 }
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-local lspconfig = require("lspconfig")
-for server, value in pairs(servers) do
-    lspconfig[server].setup { capabilities = capabilities, settings = value }
-end
