@@ -152,7 +152,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     visible = true,
     shape = gears.shape.rounded_bar,
     widget = applauncher,
-    x = s.geometry.x + s.geometry.width / 2 - 80,
+    x = s.geometry.x + s.geometry.width / 2 - 170,
     y = s.geometry.y + s.geometry.height - 60,
   }
 

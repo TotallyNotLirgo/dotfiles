@@ -10,33 +10,40 @@ local clickable_container = require("modules.clickable-container")
 --
       -- spacing = dpi(10),
       -- layout = wibox.layout.fixed.horizontal,
+local function generate_textbox(icon, launcher)
+  return {
+        {
+          widget = wibox.widget.textbox,
+          markup = icon,
+          font = 'firacode nerd font mono 32',
+          forced_height = 50,
+        },
+        shape = gears.shape.rounded_bar,
+        widget = clickable_container,
+        buttons = gears.table.join( awful.button( {}, 1, nil, function() awful.spawn(launcher) end)),
+      }
+end
 
 local popupWidget = wibox.widget {
   {
     {
-      {
-        { image = "/home/emilia/.local/share/icons/previous.svg", forced_height = 40, forced_width = 40, widget = wibox.widget.imagebox, },
-        shape = gears.shape.rounded_bar,
-        widget = clickable_container,
-        buttons = gears.table.join( awful.button( {}, 1, nil, function() awful.spawn("brave") end)),
-      },
-      {
-        { image = "/home/emilia/.local/share/icons/play.svg", forced_height = 40, forced_width = 40, widget = wibox.widget.imagebox, },
-        shape = gears.shape.rounded_bar,
-        widget = clickable_container,
-        buttons = gears.table.join( awful.button( {}, 1, nil, function() awful.spawn("alacritty") end)),
-      },
-      {
-        { image = "/home/emilia/.local/share/icons/next.svg", forced_height = 40, forced_width = 40, widget = wibox.widget.imagebox, },
-        shape = gears.shape.rounded_bar,
-        widget = clickable_container,
-        buttons = gears.table.join( awful.button( {}, 1, nil, function() awful.spawn("steam") end)),
-      },
+      generate_textbox('󰖟', 'brave'),
+      generate_textbox('', 'alacritty'),
+      generate_textbox('󰓓', 'steam'),
+      generate_textbox('󰍳', 'prismlauncher'),
+      generate_textbox('', 'spotify'),
+      generate_textbox('', 'thunar'),
+      generate_textbox('', 'signal-desktop'),
+      generate_textbox('', 'discord'),
+      generate_textbox('', 'pgadmin4'),
+      spacing = dpi(10),
       layout = wibox.layout.flex.horizontal,
-      spacing = dpi(5),
     },
     widget = wibox.container.margin,
-    margins = dpi(2),
+    top = dpi(2),
+    bottom = dpi(2),
+    left = dpi(10),
+    right = dpi(10),
   },
   bg = beautiful.bg_normal,
   widget = wibox.container.background,
