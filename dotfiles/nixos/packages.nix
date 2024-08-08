@@ -15,6 +15,11 @@ in
         killall
         blueman # Bluetooth manager
         pass # Password manager
+        pinentry-curses
+        pinentry-tty
+        pinentry-qt
+        pinentry-gtk2
+        qtpass
         gnupg # Encryption software
         tldr # Digestible command help
         xclip # Clipboard manager

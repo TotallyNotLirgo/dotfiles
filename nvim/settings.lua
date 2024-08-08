@@ -23,7 +23,3 @@ vim.opt.completeopt = "menuone,noselect"
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = "80"
 vim.opt.wrap = false
-
-vim.diagnostic.config({
-  virtual_text = false
-})

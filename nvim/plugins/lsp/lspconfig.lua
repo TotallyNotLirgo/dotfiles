@@ -1,7 +1,7 @@
 require('fidget').setup({})
 require('cmp_nvim_lsp').setup()
 require('lazydev').setup({ library = { path = { path = "luvit-meta/library", words = { "vim%.uv" } } } })
-require('lsp_lines').setup()
+require('lsp_signature').setup({})
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
     callback = function(event)
@@ -41,12 +41,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        update_in_insert = true,
-    }
-)
-
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 local lspconfig = require("lspconfig")
@@ -68,7 +62,7 @@ lspconfig.pyright.setup {
                 autoSearchPaths = true,
                 diagnosticMode = "workspace",
                 useLibraryCodeForTypes = true,
-                typeCheckingMode = "off",
+                typeCheckingMode = "basic",
                 diagnosticSeverityOverrides = {
                     reportInvalidTypeForm = "none",
                 }

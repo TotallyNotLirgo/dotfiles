@@ -9,10 +9,10 @@ local clickable_container = require("modules.clickable-container")
 -- local markup = require("markup")
 --
 local image = wibox.widget {
-  image="/home/emilia/.local/share/icons/default-artwork.png",
-  forced_height=100,
-  forced_width=100,
-  widget=wibox.widget.imagebox,
+  image = "/home/emilia/.local/share/icons/default-artwork.png",
+  forced_height = 100,
+  forced_width = 100,
+  widget = wibox.widget.imagebox,
 }
 local title = wibox.widget.textbox('---')
 local artist = wibox.widget.textbox('---')
@@ -107,40 +107,40 @@ local control_pill = wibox.widget {
 local popupWidget = wibox.widget {
   {
     {
-    {
-      image,
-      wibox.widget {
-        title,
-        artist,
-        layout = wibox.layout.flex.vertical
+      {
+        image,
+        wibox.widget {
+          title,
+          artist,
+          layout = wibox.layout.flex.vertical
+        },
+        layout = wibox.layout.fixed.horizontal,
+        spacing = dpi(10),
       },
-      layout = wibox.layout.fixed.horizontal,
+      {
+        position,
+        {
+          ratio,
+          widget = wibox.container.margin,
+          left = dpi(10),
+          right = dpi(10),
+        },
+        length,
+        layout = wibox.layout.align.horizontal
+      },
+      {
+        {
+          widget = control_pill,
+          point = { x = 100, y = 0 },
+        },
+        layout = wibox.layout.manual,
+      },
+      layout = wibox.layout.fixed.vertical,
       spacing = dpi(10),
     },
-    {
-      position,
-      {
-        ratio,
-        widget = wibox.container.margin,
-        left = dpi(10),
-        right = dpi(10),
-      },
-      length,
-      layout = wibox.layout.align.horizontal
-    },
-    {
-      {
-        widget = control_pill,
-        point = {x = 100, y = 0},
-      },
-      layout = wibox.layout.manual,
-    },
-    layout = wibox.layout.fixed.vertical,
-    spacing = dpi(10),
-  },
     widget = wibox.container.margin,
     margins = dpi(20),
-},
+  },
   resize = true,
   bg = beautiful.bg_normal,
   widget = wibox.container.background,

@@ -146,6 +146,16 @@ screen.connect_signal("request::desktop_decoration", function(s)
   -- Each screen has its own tag table.
   awful.tag({"  ", "  ", " 󰓓 ", " 󰝚 ", " 󰇘 ", " 󰇘 ", " 󰇘 "},s, awful.layout.layouts[1])
 
+  local applauncher = require("ui.bar.applauncher")
+  local popup = awful.popup {
+    ontop = false,
+    visible = true,
+    shape = gears.shape.rounded_bar,
+    widget = applauncher,
+    x = s.geometry.x + s.geometry.width / 2 - 80,
+    y = s.geometry.y + s.geometry.height - 60,
+  }
+
   -- Create an imagebox widget which will contain an icon indicating which layout we're using.
   -- We need one layoutbox per screen.
   mylayoutbox = awful.widget.layoutbox { screen = s, }
@@ -264,9 +274,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
       require("ui.bar.compstats"),
       require("ui.bar.sound_control"),
       systray,
+      require("ui.bar.battery"),
       require("ui.bar.display"),
       mytextclock,
-      -- require("ui.bar.battery"),
     }
   }
 

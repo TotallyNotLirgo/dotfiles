@@ -65,7 +65,7 @@ sound_widget:connect_signal(
   "mouse::leave",
   function()
     local w = mouse.current_wibox
-    if w and w.x == 0 then
+    if w and w.x == awful.screen.focused().geometry.x then
       music_box.visible = false
     end
   end

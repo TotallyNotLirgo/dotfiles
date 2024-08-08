@@ -15,4 +15,5 @@ with pkgs; [
     lightdm # Login screen
     pavucontrol # Volume control
     pamixer # Volume control from terminal
+    autorandr # Automatically change screen layout
 ]

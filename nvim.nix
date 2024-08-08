@@ -48,8 +48,9 @@
     conform-nvim
     lspsaga-nvim
     trouble-nvim
-    lsp_lines-nvim
     comment-nvim
+    lsp_signature-nvim
+    undotree
     (
       nvim-treesitter.withPlugins (p: with p; [
         tree-sitter-nix

@@ -6,6 +6,7 @@
     programs.gnupg.agent = {
         enable = true;
         enableSSHSupport = true;
+        pinentryPackage = pkgs.pinentry-qt;
     };
     programs.xfconf.enable = true;
     programs.thunar = {
