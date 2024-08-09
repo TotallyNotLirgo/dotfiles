@@ -152,7 +152,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     visible = true,
     shape = gears.shape.rounded_bar,
     widget = applauncher,
-    x = s.geometry.x + s.geometry.width / 2 - 170,
+    x = s.geometry.x + s.geometry.width / 2 - 220,
     y = s.geometry.y + s.geometry.height - 60,
   }
 
@@ -215,8 +215,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
           if #c3:clients() > 0 then
             -- BLING: Update the widget with the new tag
             awesome.emit_signal("bling::tag_preview::update", c3)
+            -- self:get_children_by_id('text_role')[1].markup = '<b> '.. c3.name .. ' </b>'
             -- BLING: Show the widget
             awesome.emit_signal("bling::tag_preview::visibility", s, true)
+          else
+            -- self:get_children_by_id('text_role')[1].markup = c3.name
           end
 
           if self.bg ~= '#ff0000' then
