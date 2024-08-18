@@ -51,6 +51,7 @@
     comment-nvim
     lsp_signature-nvim
     undotree
+    nvim-colorizer-lua
     (
       nvim-treesitter.withPlugins (p: with p; [
         tree-sitter-nix

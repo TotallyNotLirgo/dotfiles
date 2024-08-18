@@ -1,10 +1,7 @@
-local wibox = require('wibox')
-
-function build(widget)
-  local container =
-    wibox.widget {
+local function build(widget)
+  local container = Wibox.widget {
     widget,
-    widget = wibox.container.background
+    widget = Wibox.container.background
   }
   local old_cursor, old_wibox
 
@@ -12,7 +9,7 @@ function build(widget)
     'mouse::enter',
     function()
       container.bg = '#ffffff11'
-      -- Hm, no idea how to get the wibox from this signal's arguments...
+      ---@diagnostic disable-next-line: undefined-field
       local w = _G.mouse.current_wibox
       if w then
         old_cursor, old_wibox = w.cursor, w
@@ -31,20 +28,8 @@ function build(widget)
       end
     end
   )
-
-  container:connect_signal(
-    'button::press',
-    function()
-      container.bg = '#ffffff22'
-    end
-  )
-
-  container:connect_signal(
-    'button::release',
-    function()
-      container.bg = '#ffffff11'
-    end
-  )
+  container:connect_signal('button::press', function() container.bg = '#ffffff22' end)
+  container:connect_signal('button::release', function() container.bg = '#ffffff11' end)
 
   return container
 end

@@ -14,7 +14,7 @@ local disk = 0
 local temp = 0
 
 local function wrap_icon(icon)
-  return "<span font='FiraCode Nerd Font Mono 18' >" .. icon .."</span> "
+  return f"<span font='{Font18}' >" .. icon .."</span> "
 end
 
 local function build_textbox()

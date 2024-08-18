@@ -25,7 +25,7 @@ vim.keymap.set({ "v" }, "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set({ "v" }, "K", ":m '>-2<CR>gv=gv")
 
 vim.keymap.set({ "v" }, "<leader>y", "\"+y", { desc = "[Y]ank to system clipboard", })
-vim.keymap.set({ "v" }, "p", "_dP", { desc = "[P]aste without copying replaced", })
+vim.keymap.set({ "v" }, "p", "\"_dP", { desc = "[P]aste without copying replaced", })
 vim.keymap.set({ "n", "v" }, "<leader>d", "_d", { desc = "[D]elete without copying", })
 
 vim.keymap.set({ "n" }, "<leader>x", ":!chmod +x %<CR>", { desc = "Make e[X]ecutable", })

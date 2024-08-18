@@ -1,7 +1,9 @@
 require('fidget').setup({})
 require('cmp_nvim_lsp').setup()
 require('lazydev').setup({ library = { path = { path = "luvit-meta/library", words = { "vim%.uv" } } } })
-require('lsp_signature').setup({})
+require('lsp_signature').setup({
+    hint_enable = false
+})
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
     callback = function(event)
@@ -64,7 +66,7 @@ lspconfig.pyright.setup {
                 useLibraryCodeForTypes = true,
                 typeCheckingMode = "basic",
                 diagnosticSeverityOverrides = {
-                    reportInvalidTypeForm = "none",
+                    reportMissingParameterType = "warning",
                 }
             }
         }

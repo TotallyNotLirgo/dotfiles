@@ -1,7 +1,11 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
+local dracula = require("theme.colors")
 local clickable_container = require("modules.clickable-container")
+
+local icons_location = AwesomeLocation .. "resources/icons/"
+
 
 local function sticky_button(c)
   return wibox.widget {
@@ -9,12 +13,12 @@ local function sticky_button(c)
       {
         awful.titlebar.widget.button(
           c,
-          "Toggle the window sticking on all tags",
+          "",
           function()
             if c.sticky then
-              return "/home/emilia/.local/share/icons/unsticky.svg"
+              return icons_location .. "unsticky.svg"
             end
-            return "/home/emilia/.local/share/icons/sticky.svg"
+            return icons_location .. "sticky.svg"
           end,
           function ()
             c.sticky = not c.sticky
@@ -37,9 +41,9 @@ local function floating_button(c)
       {
         awful.titlebar.widget.button(
           c,
-          "Return to tiled layout",
+          "",
           function()
-            return "/home/emilia/.local/share/icons/tiles.svg"
+            return icons_location .. "maximize.svg"
           end,
           function ()
             c.floating = not c.floating
@@ -66,9 +70,9 @@ local function close_button(c)
       {
         awful.titlebar.widget.button(
           c,
-          "Close the window",
+          "",
           function()
-            return "/home/emilia/.local/share/icons/close.svg"
+            return icons_location .. "close.svg"
           end,
           function ()
             c:kill()

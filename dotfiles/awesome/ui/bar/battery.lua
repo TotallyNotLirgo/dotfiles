@@ -1,7 +1,5 @@
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
-local awful = require("awful")
-require("theme.colors")
 local gears = require("gears")
 local naughty = require("naughty")
 -- local markup = require("markup")
@@ -71,6 +69,9 @@ local battery = wibox.widget {
 awesome.connect_signal(
   'signal::battery',
   function(c, s)
+    if c == nil then
+      return
+    end
     charge = c
     status = s
     widget.markup = build_textbox()

@@ -7,13 +7,11 @@ local gears = require("gears")
 local music_box = require("ui.bar.music_box")
 
 -- Create a compstats widget
-local widget = wibox.widget.textbox('')
-widget.font = 'FiraCode Nerd Font Mono 12'
 local volume = 0
 local muted = false
 
 local function wrap_icon(icon, color)
-  return "<span foreground='" .. color .. "' font='FiraCode Nerd Font Mono 18' >" .. icon .."</span> "
+  return "<span foreground='" .. color .. "' font='FiraCode Nerd Font Mono 18' >" .. icon .. "</span> "
 end
 
 local function build_textbox()
@@ -23,22 +21,23 @@ local function build_textbox()
   return wrap_icon("󰕾", "#ffffff") .. "<span foreground='#ffffff'>" .. volume .. "%</span>"
 end
 
-local sound_widget = wibox.widget {
+local widget = wibox.widget.textbox(build_textbox())
+widget.font = Font12
+
+local sound_widget = Helpers.bar_widget {
   {
     {
-      {
-        {
-          widget = widget
-        },
-        widget = wibox.container.margin,
-      },
-      widget = wibox.container.background,
+      widget = widget,
+      align = "center",
     },
-    widget = clickable_container
+    widget = wibox.container.margin,
+    left = dpi(10),
+    right = dpi(10),
   },
-  widget = wibox.container.background,
+  widget = clickable_container,
   shape = gears.shape.rounded_bar,
 }
+
 sound_widget:connect_signal(
   "button::press",
   function(_, _, _, button)

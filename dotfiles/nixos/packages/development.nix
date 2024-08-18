@@ -10,9 +10,11 @@ with pkgs; [
     gcc
     nodejs_20
     python311
+    python312
     python310
     jq # JSON processor
     alacritty # Terminal
     pgadmin4-desktopmode # PostgreSQL GUI
     mongodb-compass
+    aseprite
 ]

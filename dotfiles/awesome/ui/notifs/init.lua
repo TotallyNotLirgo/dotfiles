@@ -1,75 +1,58 @@
-local naughty = require("naughty")
-local beautiful = require("beautiful")
-local gears = require("gears")
-local wibox = require("wibox")
-local awful = require("awful")
-local dpi = beautiful.xresources.apply_dpi
+local dpi = Beautiful.xresources.apply_dpi
 local helpers = require("helpers")
 local ruled = require("ruled")
 
-local menubar = require("menubar")
-
-naughty.connect_signal("request::icon", function(n, context, hints)
-    if context ~= "app_icon" then return end
-
-    local path = menubar.utils.lookup_icon(hints.app_icon) or
-                     menubar.utils.lookup_icon(hints.app_icon:lower())
-
-    if path then n.icon = path end
-
-end)
+-- Naughty.connect_signal("request::icon", function(n, context, hints)
+--     if context ~= "app_icon" then return end
+--     n.icon = theme.awesome_icon
+-- end)
 
 require("ui.notifs.brightness")
--- require("ui.notifs.playerctl")
 require("ui.notifs.volume")
--- require("ui.notifs.battery")
 
-local border_radius = beautiful.border_radius or dpi(6)
+local border_radius = Beautiful.border_radius or dpi(6)
 
-naughty.config.defaults.ontop = true
-naughty.config.defaults.screen = awful.screen.focused()
-naughty.config.defaults.timeout = 3
-naughty.config.defaults.title = "System Notification"
-naughty.config.defaults.position = "top_right"
+Naughty.config.defaults.ontop = true
+Naughty.config.defaults.screen = Awful.screen.focused()
+Naughty.config.defaults.timeout = 3
+Naughty.config.defaults.title = "System Notification"
+Naughty.config.defaults.position = "top_right"
 
 -- Timeouts
-naughty.config.presets.low.timeout = 3
-naughty.config.presets.critical.timeout = 0
+Naughty.config.presets.low.timeout = 3
+Naughty.config.presets.critical.timeout = 0
 
-naughty.config.presets.normal = {
-    font = beautiful.font,
-    fg = beautiful.fg_normal,
-    bg = beautiful.bg_normal
+Naughty.config.presets.normal = {
+    font = Beautiful.font,
+    fg = Beautiful.fg_normal,
+    bg = Beautiful.bg_normal
 }
 
-naughty.config.presets.low = {
-    font = beautiful.font,
-    fg = beautiful.fg_normal,
-    bg = beautiful.bg_normal
+Naughty.config.presets.low = {
+    font = Beautiful.font,
+    fg = Beautiful.fg_normal,
+    bg = Beautiful.bg_normal
 }
 
-naughty.config.presets.critical = {
-    font = beautiful.font .. "10",
-    fg = beautiful.xcolor1,
-    bg = beautiful.bg_normal,
+Naughty.config.presets.critical = {
+    font = Beautiful.font .. "10",
+    fg = Beautiful.xcolor1,
+    bg = Beautiful.bg_normal,
     timeout = 0
 }
 
-naughty.config.presets.ok = naughty.config.presets.normal
-naughty.config.presets.info = naughty.config.presets.normal
-naughty.config.presets.warn = naughty.config.presets.critical
+Naughty.config.presets.ok = Naughty.config.presets.normal
+Naughty.config.presets.info = Naughty.config.presets.normal
+Naughty.config.presets.warn = Naughty.config.presets.critical
 
 ruled.notification.connect_signal("request::rules", function()
-    -- All notifications will match this rule.
     ruled.notification.append_rule {
         rule = {},
-        properties = {screen = awful.screen.preferred, implicit_timeout = 6}
+        properties = { screen = Awful.screen.preferred, implicit_timeout = 6 }
     }
 end)
 
-naughty.connect_signal("request::display", function(n)
-
-    local appicon = beautiful.notification_icon
+Naughty.connect_signal("request::display", function(n)
     local time = os.date("%H:%M")
 
     local action_widget = {
@@ -78,165 +61,92 @@ naughty.connect_signal("request::display", function(n)
                 id = "text_role",
                 align = "center",
                 valign = "center",
-                font = beautiful.font .. "8",
-                widget = wibox.widget.textbox
+                font = Beautiful.font .. "8",
+                widget = Wibox.widget.textbox
             },
-            left = dpi(6),
-            right = dpi(6),
-            widget = wibox.container.margin
+            margins = dpi(6),
+            widget = Wibox.container.margin
         },
-        bg = beautiful.xcolor0,
-        forced_height = dpi(25),
-        forced_width = dpi(20),
+        bg = Beautiful.bg_normal,
         shape = helpers.rrect(dpi(4)),
-        widget = wibox.container.background
+        widget = Wibox.container.background
     }
 
-    local actions = wibox.widget {
+    local actions = Wibox.widget {
         notification = n,
-        base_layout = wibox.widget {
+        base_layout = Wibox.widget {
             spacing = dpi(8),
-            layout = wibox.layout.flex.horizontal
+            layout = Wibox.layout.flex.horizontal
         },
         widget_template = action_widget,
-        style = {underline_normal = false, underline_selected = true},
-        widget = naughty.list.actions
+        style = { underline_normal = false, underline_selected = true },
+        widget = Naughty.list.actions
     }
 
-    naughty.layout.box {
+    Naughty.layout.box {
         notification = n,
         type = "notification",
-        bg = beautiful.xbackground .. 00,
+        bg = Beautiful.bg_normal,
         widget_template = {
             {
                 {
                     {
                         {
-                            {
-                                {
-                                    {
-                                        {
-                                            image = appicon,
-                                            resize = true,
-                                            clip_shape = helpers.rrect(
-                                                border_radius - 3),
-                                            widget = wibox.widget.imagebox
-                                        },
-                                        strategy = "max",
-                                        height = dpi(20),
-                                        widget = wibox.container.constraint
-                                    },
-                                    right = dpi(10),
-                                    widget = wibox.container.margin
-                                },
-                                {
-                                    markup = n.app_name,
-                                    align = "left",
-                                    font = beautiful.font,
-                                    widget = wibox.widget.textbox
-                                },
-                                {
-                                    markup = time,
-                                    align = "right",
-                                    font = beautiful.font,
-                                    widget = wibox.widget.textbox
-                                },
-                                layout = wibox.layout.align.horizontal
-                            },
-                            top = dpi(7),
-                            left = dpi(20),
-                            right = dpi(20),
-                            bottom = dpi(5),
-                            widget = wibox.container.margin
+                            Wibox.widget.textbox(n.app_name),
+                            nil,
+                            Wibox.widget.textbox(time),
+                            layout = Wibox.layout.align.horizontal
                         },
-                        bg = beautiful.lighter_bg,
-                        widget = wibox.container.background
+                        margins = dpi(4),
+                        widget = Wibox.container.margin
                     },
-                    {
-                        {
-                            {
-                                helpers.vertical_pad(10),
-                                {
-                                    {
-                                        step_function = wibox.container.scroll
-                                            .step_functions
-                                            .waiting_nonlinear_back_and_forth,
-                                        speed = 50,
-                                        {
-                                            markup = "<span weight='bold'>" ..
-                                                n.title .. "</span>",
-                                            font = beautiful.font,
-                                            align = "left",
-                                            widget = wibox.widget.textbox
-                                        },
-                                        forced_width = dpi(204),
-                                        widget = wibox.container.scroll
-                                            .horizontal
-                                    },
-                                    {
-                                        {
-                                            markup = n.message,
-                                            align = "left",
-                                            font = beautiful.font,
-                                            widget = wibox.widget.textbox
-                                        },
-                                        right = 10,
-                                        widget = wibox.container.margin
-                                    },
-                                    spacing = 0,
-                                    layout = wibox.layout.flex.vertical
-                                },
-                                helpers.vertical_pad(10),
-                                layout = wibox.layout.align.vertical
-                            },
-                            left = dpi(20),
-                            right = dpi(20),
-                            widget = wibox.container.margin
-                        },
-                        {
-                            {
-                                nil,
-                                {
-                                    {
-                                        image = n.icon,
-                                        resize = true,
-                                        clip_shape = helpers.rrect(
-                                            border_radius - 3),
-                                        widget = wibox.widget.imagebox
-                                    },
-                                    strategy = "max",
-                                    height = 40,
-                                    widget = wibox.container.constraint
-                                },
-                                nil,
-                                expand = "none",
-                                layout = wibox.layout.align.vertical
-                            },
-                            top = dpi(0),
-                            left = dpi(10),
-                            right = dpi(10),
-                            bottom = dpi(0),
-                            widget = wibox.container.margin
-                        },
-                        layout = wibox.layout.fixed.horizontal
-                    },
-                    {
-                        {actions, layout = wibox.layout.fixed.vertical},
-                        margins = dpi(10),
-                        visible = n.actions and #n.actions > 0,
-                        widget = wibox.container.margin
-                    },
-                    layout = wibox.layout.fixed.vertical
+                    bg = Beautiful.lighter_bg,
+                    widget = Wibox.container.background
                 },
-                top = dpi(0),
-                bottom = dpi(5),
-                widget = wibox.container.margin
+                {
+                    {
+                        {
+                            {
+                                step_function = Wibox.container.scroll.step_functions.nonlinear_back_and_forth,
+                                Wibox.widget.textbox(f "<span weight='bold'>{n.title}</span>"),
+                                forced_width = dpi(320),
+                                speed = 50,
+                                widget = Wibox.container.scroll.horizontal
+                            },
+                            {
+                                step_function = Wibox.container.scroll.step_functions.nonlinear_back_and_forth,
+                                Wibox.widget.textbox(n.message),
+                                forced_width = dpi(320),
+                                speed = 50,
+                                widget = Wibox.container.scroll.horizontal
+                            },
+                            layout = Wibox.layout.flex.vertical
+                        },
+                        {
+                            Wibox.widget.imagebox(n.icon),
+                            strategy = "max",
+                            height = 40,
+                            widget = Wibox.container.constraint
+                        },
+                        spacing = dpi(4),
+                        layout = Wibox.layout.fixed.horizontal
+                    },
+                    margins = dpi(10),
+                    widget = Wibox.container.margin
+                },
+                {
+                    actions,
+                    margins = dpi(10),
+                    visible = n.actions and #n.actions > 0,
+                    widget = Wibox.container.margin
+                },
+                layout = Wibox.layout.fixed.vertical
             },
-            bg = beautiful.darker_bg,
+            bg = Beautiful.darker_bg,
             border_width = 0,
-            border_color = beautiful.widget_border_color,
+            border_color = Beautiful.widget_border_color,
             shape = helpers.rrect(border_radius),
-            widget = wibox.container.background
+            widget = Wibox.container.background
         }
     }
 end)

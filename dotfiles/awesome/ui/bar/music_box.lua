@@ -1,13 +1,31 @@
 local wibox = require("wibox")
 local awful = require("awful")
 local beautiful = require("beautiful")
-local naughty = require("naughty")
 local dpi = require("beautiful.xresources").apply_dpi
 require("theme.colors")
 local gears = require("gears")
 local clickable_container = require("modules.clickable-container")
--- local markup = require("markup")
---
+local icon_path = AwesomeLocation .. "resources/icons/player/{icon}.svg"
+
+---@diagnostic disable-next-line: unused-local
+local function icon_button(icon, command)
+  return {
+        {
+          image = f(icon_path),
+          forced_height = 40,
+          forced_width = 40,
+          widget = wibox.widget.imagebox,
+        },
+        shape = gears.shape.circle,
+        widget = clickable_container,
+        buttons = gears.table.join(
+          awful.button({}, 1, nil, function()
+        awful.spawn(command)
+      end)
+        ),
+      }
+end
+
 local image = wibox.widget {
   image = "/home/emilia/.local/share/icons/default-artwork.png",
   forced_height = 100,
@@ -31,66 +49,9 @@ local ratio = wibox.widget {
 local control_pill = wibox.widget {
   {
     {
-      {
-        {
-          image = "/home/emilia/.local/share/icons/previous.svg",
-          forced_height = 40,
-          forced_width = 40,
-          widget = wibox.widget.imagebox,
-        },
-        shape = gears.shape.rounded_bar,
-        widget = clickable_container,
-        buttons = gears.table.join(
-          awful.button(
-            {},
-            1,
-            nil,
-            function()
-              awful.spawn("playerctl previous")
-            end
-          )
-        ),
-      },
-      {
-        {
-          image = "/home/emilia/.local/share/icons/play.svg",
-          forced_height = 40,
-          forced_width = 40,
-          widget = wibox.widget.imagebox,
-        },
-        shape = gears.shape.rounded_bar,
-        widget = clickable_container,
-        buttons = gears.table.join(
-          awful.button(
-            {},
-            1,
-            nil,
-            function()
-              awful.spawn("playerctl play-pause")
-            end
-          )
-        ),
-      },
-      {
-        {
-          image = "/home/emilia/.local/share/icons/next.svg",
-          forced_height = 40,
-          forced_width = 40,
-          widget = wibox.widget.imagebox,
-        },
-        shape = gears.shape.rounded_bar,
-        widget = clickable_container,
-        buttons = gears.table.join(
-          awful.button(
-            {},
-            1,
-            nil,
-            function()
-              awful.spawn("playerctl next")
-            end
-          )
-        ),
-      },
+      icon_button('previous', 'playerctl previous'),
+      icon_button('play', 'playerctl play-pause'),
+      icon_button('next', 'playerctl next'),
       spacing = dpi(10),
       layout = wibox.layout.fixed.horizontal,
     },

@@ -13,3 +13,8 @@ require('Comment').setup({
     toggler = { line = '<C-_>', block = '<leader><C-_>' },
     opleader = { line = '<C-_>', block = '<leader><C-_>' }
 })
+require('colorizer').setup({
+    user_default_options = {
+        names = false
+    }
+})
