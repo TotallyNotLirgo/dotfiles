@@ -3,15 +3,13 @@ local dpi = require("beautiful.xresources").apply_dpi
 local awful = require("awful")
 require("theme.colors")
 local gears = require("gears")
--- local markup = require("markup")
+local clickable_container = require("modules.clickable-container")
 
-local widget = wibox.widget.textbox('')
 local type = "duplicated"
 local display_mode = "single"
-widget.font = 'FiraCode Nerd Font Mono 12'
 
 local function wrap_icon(icon)
-  return "<span font='FiraCode Nerd Font Mono 24' >" .. icon .."</span>"
+  return f"<span font='{Font24}' >" .. icon .."</span>"
 end
 
 local function build_textbox()
@@ -24,23 +22,16 @@ local function build_textbox()
   end
 end
 
-local display_widget = wibox.widget {
+local widget = wibox.widget.textbox(wrap_icon('󰍺'))
+
+local display_widget = Helpers.bar_widget {
   {
-    {
-      {
-        {
-          widget = widget
-        },
-        widget = wibox.container.margin,
-        left = dpi(10),
-        right = dpi(10),
-      },
-      widget = wibox.container.background,
-    },
-    widget = clickable_container
+    widget,
+    margins = dpi(6),
+    widget = wibox.container.margin,
   },
-  widget = wibox.container.background,
-  shape = gears.shape.rounded_bar
+  widget = clickable_container,
+  shape = gears.shape.circle
 }
 display_widget:connect_signal(
   "button::press",
@@ -66,7 +57,6 @@ display_widget:connect_signal(
     end
   end
 )
-widget.markup = build_textbox()
 
 awesome.connect_signal(
   'signal::display',

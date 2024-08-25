@@ -1,7 +1,3 @@
--- Provides:
--- signal::volume
---      percentage (integer)
---      muted (boolean)
 local awful = require("awful")
 
 local volume_old = -1
@@ -13,7 +9,7 @@ local function emit_volume_info()
             local volume = stdout:match('(%d+)%% /')
             local muted = stdout:match('muted:(%s+)[yes]')
             local muted_int = muted and 1 or 0
-            local volume_int = tonumber(volume)
+            local volume_int = tonumber(volume) or 0
             if volume_int ~= volume_old or muted_int ~= muted_old then
                 awesome.emit_signal("signal::volume", volume_int, muted)
                 volume_old = volume_int
@@ -37,6 +33,6 @@ awful.spawn.easy_async({
 }, function()
     -- Run emit_volume_info() with each line printed
     awful.spawn.with_line_callback(volume_script, {
-        stdout = function(line) emit_volume_info() end
+        stdout = function(_) emit_volume_info() end
     })
 end)

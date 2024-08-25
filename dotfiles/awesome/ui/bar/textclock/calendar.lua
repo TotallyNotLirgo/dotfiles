@@ -66,8 +66,18 @@ local calWidget = wibox.widget {
 local calendar = awful.popup {
     ontop = true,
     visible = false,
-    widget = calWidget
+    shape = Gears.shape.rounded_rect,
+    widget = calWidget,
+    border_width = Beautiful.border_width,
+    border_color = Beautiful.border_color_active,
 }
+calendar:connect_signal(
+  "mouse::leave",
+  function()
+    calendar.visible = false
+  end
+)
+
 
 local function set_date(date)
     local current_date = os.date('*t')
@@ -99,7 +109,7 @@ calendar:set_xproperty("WM_CLASS", "calendar")
 
 local function cal_toggle(screen)
     calendar.visible = not calendar.visible
-    calendar.x = screen.geometry.x + screen.geometry.width - 270
+    calendar.x = screen.geometry.x + screen.geometry.width - 272
     calendar.y = screen.geometry.y + beautiful.wibar_height + beautiful.useless_gap * 2
 end
 

@@ -11,12 +11,12 @@ local font = Font .. " Bold 12"
 local textclock = Helpers.bar_widget {
       {
         {
-          widget = wibox.widget.textclock(f'<span font="{font}">%H:%M:%S</span>', 1),
+          widget = wibox.widget.textclock(f'<span font="{font}">%a %d-%m-%Y %H:%M:%S</span>', 1),
           align = "center",
         },
         widget = wibox.container.margin,
-        left = dpi(10),
-        right = dpi(10),
+        left = Beautiful.useless_gap * 2,
+        right = Beautiful.useless_gap * 2,
       },
       widget = clickable_container,
       shape = gears.shape.rounded_bar,

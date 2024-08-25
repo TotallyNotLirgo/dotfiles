@@ -1,13 +1,11 @@
 local wibox = require("wibox")
 local awful = require("awful")
-local naughty = require("naughty")
 local beautiful = require("beautiful")
 local dpi = require("beautiful.xresources").apply_dpi
 require("theme.colors")
 local gears = require("gears")
-clickable_container = require("modules.clickable-container")
--- local markup = require("markup")
---
+local clickable_container = require("modules.clickable-container")
+
 local cancelButton = wibox.widget({
   {
     awful.widget.button(
@@ -137,7 +135,7 @@ logoutButton:connect_signal(
 )
 
 -- Create a compstats widget
-widget = awful.widget.button({
+local widget = awful.widget.button({
   image = '/home/emilia/.local/share/icons/heart.svg',
   buttons = {
     awful.button({}, 1, function()
@@ -149,51 +147,15 @@ widget = awful.widget.button({
 })
 widget.font = 'FiraCode Nerd Font Mono 12'
 
-powermenu = wibox.widget {
+local powermenu = Helpers.bar_widget {
   {
-    {
-      widget = widget
-    },
-    widget = wibox.container.margin,
-    top = dpi(4),
-    bottom = dpi(4),
-    right = dpi(4),
-    left = dpi(4),
+    widget,
+    margins = Beautiful.useless_gap * 2,
+    widget = wibox.container.margin
   },
-  widget = wibox.container.background,
-  shape = gears.shape.rounded_bar,
+  shape = gears.shape.circle,
+  widget = clickable_container,
 }
 
-
-local old_cursor, old_wibox
-powermenu:connect_signal(
-  'mouse::enter',
-  function()
-    local w = _G.mouse.current_wibox
-    if w then
-      old_cursor, old_wibox = w.cursor, w
-      w.cursor = 'hand2'
-    end
-    powermenu.bg = '#ffffff11'
-  end
-)
-
-powermenu:connect_signal(
-  'mouse::leave',
-  function()
-    powermenu.bg = '#ffffff00'
-    if old_wibox then
-      old_wibox.cursor = old_cursor
-    end
-  end
-)
-
-return {
-  powermenu,
-  widget=wibox.container.margin,
-  top = dpi(2),
-  bottom = dpi(2),
-  right = dpi(6),
-  left = dpi(6),
-}
+return powermenu
 

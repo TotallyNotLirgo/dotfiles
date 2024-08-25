@@ -6,12 +6,12 @@ local image = ""
 local previous_image = ""
 local ram_script = [[
   sh -c "
-  (playerctl metadata mpris:artUrl; playerctl metadata title; playerctl metadata artist; playerctl metadata mpris:length; playerctl position) | tr '\n' '\t'
+  (playerctl metadata mpris:artUrl; playerctl metadata title; playerctl metadata artist; playerctl metadata mpris:length; playerctl position; playerctl status) | tr '\n' '\t'
   "]]
 
 local filename = ""
 awful.widget.watch(ram_script, update_interval, function(widget, stdout)
-  image = stdout:match('(.*)\t.*\t.*\t.*\t.*\t')
+  image = stdout:match('(.*)\t.*\t.*\t.*\t.*\t.*\t')
   if image == nil then
     return
   end
@@ -22,10 +22,11 @@ awful.widget.watch(ram_script, update_interval, function(widget, stdout)
     awful.spawn.with_shell("curl -o " .. filename .. " " .. image)
     previous_image = image
   end
-  local title = stdout:match('.*\t(.*)\t.*\t.*\t.*\t')
-  local artist = stdout:match('.*\t.*\t(.*)\t.*\t.*\t')
-  local length = stdout:match('.*\t.*\t.*\t(.*)\t.*\t')
-  local position = stdout:match('.*\t.*\t.*\t.*\t(.*)\t')
+  local title = stdout:match('.*\t(.*)\t.*\t.*\t.*\t.*\t')
+  local artist = stdout:match('.*\t.*\t(.*)\t.*\t.*\t.*\t')
+  local length = stdout:match('.*\t.*\t.*\t(.*)\t.*\t.*\t')
+  local position = stdout:match('.*\t.*\t.*\t.*\t(.*)\t.*\t')
+  local status = stdout:match('.*\t.*\t.*\t.*\t.*\t(.*)\t')
   length = tonumber(length) / 1000000
   position = tonumber(position)
   local progress = position / length * 100
@@ -36,5 +37,5 @@ awful.widget.watch(ram_script, update_interval, function(widget, stdout)
   length = string.format("%02d:%02d", length_minute, length_second)
   position = string.format("%02d:%02d", minute, second)
 
-  awesome.emit_signal("signal::player", filename, title, artist, length, position, progress)
+  awesome.emit_signal("signal::player", filename, title, artist, length, position, progress, status)
 end)

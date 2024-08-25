@@ -54,6 +54,8 @@ end)
 
 Naughty.connect_signal("request::display", function(n)
     local time = os.date("%H:%M")
+    n.time = time
+    awesome.emit_signal("signal::new_notification", n)
 
     local action_widget = {
         {

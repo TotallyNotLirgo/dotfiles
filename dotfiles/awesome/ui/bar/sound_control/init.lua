@@ -4,7 +4,8 @@ local dpi = require("beautiful.xresources").apply_dpi
 local awful = require("awful")
 require("theme.colors")
 local gears = require("gears")
-local music_box = require("ui.bar.music_box")
+local music_box = require("ui.bar.sound_control.music_box")
+local clickable_container = require("modules.clickable-container")
 
 -- Create a compstats widget
 local volume = 0
@@ -42,7 +43,11 @@ sound_widget:connect_signal(
   "button::press",
   function(_, _, _, button)
     if button == 1 then
-      awful.spawn("pavucontrol")
+      music_box.visible = not music_box.visible
+      if music_box.visible then
+        music_box.x = awful.screen.focused().geometry.x + awful.screen.focused().geometry.width - 400 - dpi(6)
+        music_box.y = awful.screen.focused().geometry.y + beautiful.wibar_height + beautiful.useless_gap * 2
+      end
     elseif button == 3 then
       awful.spawn("pamixer -t")
     elseif button == 4 then
@@ -52,23 +57,7 @@ sound_widget:connect_signal(
     end
   end
 )
-sound_widget:connect_signal(
-  "mouse::enter",
-  function()
-    music_box.visible = true
-    music_box.x = awful.screen.focused().geometry.x + awful.screen.focused().geometry.width - 400
-    music_box.y = awful.screen.focused().geometry.y + beautiful.wibar_height
-  end
-)
-sound_widget:connect_signal(
-  "mouse::leave",
-  function()
-    local w = mouse.current_wibox
-    if w and w.x == awful.screen.focused().geometry.x then
-      music_box.visible = false
-    end
-  end
-)
+
 awesome.connect_signal(
   'signal::volume',
   function(v, m)

@@ -5,25 +5,27 @@ local dpi = require("beautiful.xresources").apply_dpi
 require("theme.colors")
 local gears = require("gears")
 local clickable_container = require("modules.clickable-container")
-local icon_path = AwesomeLocation .. "resources/icons/player/{icon}.svg"
 
----@diagnostic disable-next-line: unused-local
+
 local function icon_button(icon, command)
-  return {
-        {
-          image = f(icon_path),
-          forced_height = 40,
-          forced_width = 40,
-          widget = wibox.widget.imagebox,
-        },
-        shape = gears.shape.circle,
-        widget = clickable_container,
-        buttons = gears.table.join(
-          awful.button({}, 1, nil, function()
-        awful.spawn(command)
-      end)
-        ),
-      }
+  local widget = Helpers.bar_widget {
+    {
+      Wibox.widget.textbox(f "<span font='{Font32}' >" .. icon .. "</span>"),
+      margins = dpi(6),
+      widget = Wibox.container.margin,
+    },
+    widget = clickable_container,
+    shape = Gears.shape.circle
+  }
+  widget:connect_signal(
+    "button::press",
+    function(_, _, _, button)
+      if button == 1 then
+        Awful.spawn(command)
+      end
+    end
+  )
+  return widget
 end
 
 local image = wibox.widget {
@@ -36,6 +38,7 @@ local title = wibox.widget.textbox('---')
 local artist = wibox.widget.textbox('---')
 local length = wibox.widget.textbox('0:00')
 local position = wibox.widget.textbox('0:00')
+local play_pause = icon_button('', 'playerctl play-pause')
 local ratio = wibox.widget {
   bar_shape = gears.shape.rounded_rect,
   bar_height = 3,
@@ -49,9 +52,9 @@ local ratio = wibox.widget {
 local control_pill = wibox.widget {
   {
     {
-      icon_button('previous', 'playerctl previous'),
-      icon_button('play', 'playerctl play-pause'),
-      icon_button('next', 'playerctl next'),
+      icon_button('', 'playerctl previous'),
+      play_pause,
+      icon_button('', 'playerctl next'),
       spacing = dpi(10),
       layout = wibox.layout.fixed.horizontal,
     },
@@ -110,7 +113,7 @@ local popupWidget = wibox.widget {
 }
 awesome.connect_signal(
   'signal::player',
-  function(i, t, a, l, p, r)
+  function(i, t, a, l, p, r, s)
     if i == nil then
       return
     end
@@ -120,6 +123,11 @@ awesome.connect_signal(
     length.text = l
     position.text = p
     ratio.value = r
+    if s == "Playing" then
+      play_pause.children[1].children[1].children[1].children[1].markup = f "<span font='{Font32}'></span>"
+    else
+      play_pause.children[1].children[1].children[1].children[1].markup = f "<span font='{Font32}'></span>"
+    end
   end
 )
 
@@ -128,6 +136,8 @@ local popup = awful.popup {
   visible = false,
   shape = gears.shape.rounded_rect,
   widget = popupWidget,
+  border_width = beautiful.border_width,
+  border_color = beautiful.border_color_active,
 }
 popupWidget:connect_signal(
   "mouse::leave",

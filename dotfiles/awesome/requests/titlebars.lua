@@ -1,4 +1,4 @@
-local titlebar_buttons = require("ui.bar.titlebar_buttons")
+local titlebar_buttons = require("ui.titlebar_buttons")
 
 client.connect_signal("request::titlebars", function(c)
   local top_titlebar = Awful.titlebar(c, {})
