@@ -1,6 +1,5 @@
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
-require("theme.colors")
 
 local header = wibox.widget.textbox("<span weight='bold'>Network:</span>")
 local ip_widget = wibox.widget.textbox('127.0.0.1')

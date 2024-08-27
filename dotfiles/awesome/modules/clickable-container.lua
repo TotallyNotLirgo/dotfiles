@@ -8,7 +8,7 @@ local function build(widget)
   container:connect_signal(
     'mouse::enter',
     function()
-      container.bg = '#ffffff11'
+      container.bg = Beautiful.foreground .. '11'
       ---@diagnostic disable-next-line: undefined-field
       local w = _G.mouse.current_wibox
       if w then
@@ -21,15 +21,15 @@ local function build(widget)
   container:connect_signal(
     'mouse::leave',
     function()
-      container.bg = '#ffffff00'
+      container.bg = Beautiful.foreground .. '00'
       if old_wibox then
         old_wibox.cursor = old_cursor
         old_wibox = nil
       end
     end
   )
-  container:connect_signal('button::press', function() container.bg = '#ffffff22' end)
-  container:connect_signal('button::release', function() container.bg = '#ffffff11' end)
+  container:connect_signal('button::press', function() container.bg = Beautiful.foreground .. '22' end)
+  container:connect_signal('button::release', function() container.bg = Beautiful.foreground .. '11' end)
 
   return container
 end

@@ -1,7 +1,6 @@
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
 local clickable_container = require("modules.clickable-container")
-require("theme.colors")
 
 local header = wibox.widget.textbox("<span weight='bold'>Notifications (0):</span>")
 header.font = Font12

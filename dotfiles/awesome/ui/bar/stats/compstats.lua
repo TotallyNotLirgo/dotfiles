@@ -1,7 +1,6 @@
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
 local awful = require("awful")
-require("theme.colors")
 
 local header = wibox.widget.textbox("<span weight='bold'>Hardware:</span>")
 local ram_widget = wibox.widget.textbox('')

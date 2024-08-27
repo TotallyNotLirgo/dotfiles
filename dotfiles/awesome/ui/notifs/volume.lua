@@ -8,17 +8,15 @@ local dpi = beautiful.xresources.apply_dpi
 local width = dpi(50)
 local height = dpi(300)
 
-xcolor4 = beautiful.xcolor4 or "#a3b8ef"
-
 local active_color_1 = {
     type = 'linear',
     from = {0, 0},
     to = {200, 50}, -- replace with w,h later
-    stops = {{0, beautiful.xcolor6}, {0.50, "#a3b8ef"}}
+    stops = {{0, beautiful.xcolor6}, {0.50, Beautiful.xcolor4}}
 }
 
 local volume_icon = wibox.widget {
-    markup = "<span foreground='#a3b8ef'><b>󰕾</b></span>",
+    markup = "<span foreground='" .. Beautiful.xcolor4 .. "'><b>󰕾</b></span>",
     align = 'center',
     valign = 'center',
     font = "MesloLGS NF" .. ' 25',
@@ -32,7 +30,7 @@ local volume_adjust = awful.popup({
     visible = false,
     ontop = true,
     widget = wibox.container.background,
-    bg = "#00000000",
+    bg = Beautiful.background .. '00',
     placement = function(c)
         awful.placement
             .right(c, {margins = {right = beautiful.useless_gap * 4}})
@@ -85,9 +83,9 @@ local hide_volume_adjust = gears.timer {
 awesome.connect_signal("signal::volume", function(vol, muted)
     volume_bar.value = vol
     if muted or vol == 0 then
-        volume_icon.markup = "<span foreground='#a3b8ef'><b>󰖁</b></span>"
+        volume_icon.markup = "<span foreground='" .. Beautiful.xcolor4 .. "'><b>󰖁</b></span>"
     else
-        volume_icon.markup = "<span foreground='#a3b8ef'><b>󰕾</b></span>"
+        volume_icon.markup = "<span foreground='" .. Beautiful.xcolor4 .. "'><b>󰕾</b></span>"
     end
 
     if volume_adjust.visible then
