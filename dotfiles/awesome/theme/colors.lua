@@ -12,5 +12,26 @@ return {
     purple = "#bd93f9",
     red = "#ff5555",
     yellow = "#f1fa8c",
+
+    darker_bg = "#10171e",
+    lighter_bg = "#1f272e",
+    xbackground = "#131a21",
+    xforeground = "#ffffff",
+    xcolor0 = "#29343d",
+    xcolor1 = "#f9929b",
+    xcolor2 = "#7ed491",
+    xcolor3 = "#fbdf90",
+    xcolor4 = "#a3b8ef",
+    xcolor5 = "#ccaced",
+    xcolor6 = "#9ce5c0",
+    xcolor7 = "#ffffff",
+    xcolor8 = "#3b4b58",
+    xcolor9 = "#fca2aa",
+    xcolor10 = "#a5d4af",
+    xcolor11 = "#fbeab9",
+    xcolor12 = "#bac8ef",
+    xcolor13 = "#d7c1ed",
+    xcolor14 = "#c7e5d6",
+    xcolor15 = "#eaeaea"
 }
 

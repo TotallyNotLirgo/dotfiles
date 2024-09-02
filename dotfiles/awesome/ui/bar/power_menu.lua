@@ -2,7 +2,6 @@ local wibox = require("wibox")
 local awful = require("awful")
 local beautiful = require("beautiful")
 local dpi = require("beautiful.xresources").apply_dpi
-require("theme.colors")
 local gears = require("gears")
 local clickable_container = require("modules.clickable-container")
 

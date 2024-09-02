@@ -30,7 +30,7 @@ local bright_adjust = awful.popup({
     visible = false,
     ontop = true,
     widget = wibox.container.background,
-    bg = "#00000000",
+    bg = Beautiful.background .. '00',
     placement = function(c)
         awful.placement
             .right(c, {margins = {right = beautiful.useless_gap * 4}})

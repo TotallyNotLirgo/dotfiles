@@ -2,7 +2,6 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local dpi = require("beautiful.xresources").apply_dpi
 local awful = require("awful")
-require("theme.colors")
 local gears = require("gears")
 local music_box = require("ui.bar.sound_control.music_box")
 local clickable_container = require("modules.clickable-container")
@@ -17,9 +16,9 @@ end
 
 local function build_textbox()
   if muted or volume <= 0 then
-    return wrap_icon("󰖁", "#aaaaaa") .. "<span foreground='#aaaaaa'>" .. volume .. "%</span>"
+    return wrap_icon("󰖁", Beautiful.selection) .. "<span foreground='" .. Beautiful.selection .. "'>" .. volume .. "%</span>"
   end
-  return wrap_icon("󰕾", "#ffffff") .. "<span foreground='#ffffff'>" .. volume .. "%</span>"
+  return wrap_icon("󰕾", Beautiful.foreground) .. "<span foreground='" .. Beautiful.foreground .. "'>" .. volume .. "%</span>"
 end
 
 local widget = wibox.widget.textbox(build_textbox())

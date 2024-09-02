@@ -17,4 +17,7 @@ with pkgs; [
     pgadmin4-desktopmode # PostgreSQL GUI
     mongodb-compass
     aseprite
+    android-tools
+    wineWowPackages.stagingFull
+    winetricks
 ]

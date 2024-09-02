@@ -2,30 +2,28 @@ local awful = require('awful')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 local dpi = require('beautiful').xresources.apply_dpi
-local colors = require("theme.colors")
 
-require("theme.colors")
 awesome.register_xproperty("WM_CLASS", "string")
 
 local styles = {}
 
 styles.month = {
     padding = 5,
-    bg_color = '#555555',
+    fg_color = Beautiful.selection,
     markup = function(t) return t end,
 }
 local focus_style = {
     padding = 5,
-    fg_color = colors.purple,
+    fg_color = Beautiful.purple,
     markup = function(t) return '<b>' .. t .. '</b>' end,
 }
 styles.focus = focus_style
 styles.header = {
-    fg_color = colors.green,
+    fg_color = Beautiful.green,
     markup = function(t) return '<b>' .. t .. '</b>' end,
 }
 styles.weekday = {
-    fg_color = colors.foreground,
+    fg_color = Beautiful.foreground,
     markup = function(t) return '<b>' .. t .. '</b>' end,
 }
 local function decorate_cell(widget, flag)
@@ -40,7 +38,7 @@ local function decorate_cell(widget, flag)
             margins = (props.padding or 2) + (props.border_width or 0),
             widget = wibox.container.margin
         },
-        fg = props.fg_color or '#999999',
+        fg = props.fg_color,
         widget = wibox.container.background
     }
 end

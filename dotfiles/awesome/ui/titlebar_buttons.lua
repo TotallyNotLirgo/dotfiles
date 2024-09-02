@@ -1,7 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
-local dracula = require("theme.colors")
 local clickable_container = require("modules.clickable-container")
 
 local icons_location = AwesomeLocation .. "resources/icons/"
