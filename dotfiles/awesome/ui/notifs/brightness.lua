@@ -12,11 +12,11 @@ local active_color_1 = {
     type = 'linear',
     from = {0, 0},
     to = {200, 50}, -- replace with w,h later
-    stops = {{0, beautiful.xcolor6}, {0.50, beautiful.xcolor4}}
+    stops = {{0, beautiful.green}, {0.50, beautiful.blue}}
 }
 
 local bright_icon = wibox.widget {
-    markup = "<span foreground='" .. beautiful.xcolor4 .. "'><b></b></span>",
+    markup = "<span foreground='" .. beautiful.blue .. "'><b></b></span>",
     align = 'center',
     valign = 'center',
     font = "MesloLGS NF" .. ' 25',
@@ -30,7 +30,7 @@ local bright_adjust = awful.popup({
     visible = false,
     ontop = true,
     widget = wibox.container.background,
-    bg = Beautiful.background .. '00',
+    bg = Beautiful.bg0 .. '00',
     placement = function(c)
         awful.placement
             .right(c, {margins = {right = beautiful.useless_gap * 4}})
@@ -40,7 +40,7 @@ local bright_adjust = awful.popup({
 local bright_bar = wibox.widget {
     bar_shape = gears.shape.rectangle,
     shape = gears.shape.rounded_rect,
-    background_color = beautiful.lighter_bg,
+    background_color = beautiful.bg1,
     color = active_color_1,
     max_value = 100,
     value = 0,
@@ -65,7 +65,7 @@ bright_ratio:adjust_ratio(2, 0.72, 0.28, 0)
 bright_adjust.widget = wibox.widget {
     bright_ratio,
     shape = helpers.rrect(beautiful.border_radius),
-    bg = beautiful.xbackground,
+    bg = beautiful.bg_d,
     widget = wibox.container.background
 }
 

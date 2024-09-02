@@ -12,11 +12,11 @@ local active_color_1 = {
     type = 'linear',
     from = {0, 0},
     to = {200, 50}, -- replace with w,h later
-    stops = {{0, beautiful.xcolor6}, {0.50, Beautiful.xcolor4}}
+    stops = {{0, beautiful.green}, {0.50, Beautiful.blue}}
 }
 
 local volume_icon = wibox.widget {
-    markup = "<span foreground='" .. Beautiful.xcolor4 .. "'><b>󰕾</b></span>",
+    markup = "<span foreground='" .. Beautiful.blue .. "'><b>󰕾</b></span>",
     align = 'center',
     valign = 'center',
     font = "MesloLGS NF" .. ' 25',
@@ -30,7 +30,7 @@ local volume_adjust = awful.popup({
     visible = false,
     ontop = true,
     widget = wibox.container.background,
-    bg = Beautiful.background .. '00',
+    bg = Beautiful.bg0 .. '00',
     placement = function(c)
         awful.placement
             .right(c, {margins = {right = beautiful.useless_gap * 4}})
@@ -40,7 +40,7 @@ local volume_adjust = awful.popup({
 local volume_bar = wibox.widget {
     bar_shape = gears.shape.rectangle,
     shape = gears.shape.rounded_rect,
-    background_color = beautiful.lighter_bg,
+    background_color = beautiful.bg1,
     color = active_color_1,
     max_value = 100,
     value = 0,
@@ -65,7 +65,7 @@ volume_ratio:adjust_ratio(2, 0.72, 0.28, 0)
 volume_adjust.widget = wibox.widget {
     volume_ratio,
     shape = helpers.rrect(beautiful.border_radius),
-    bg = beautiful.xbackground,
+    bg = beautiful.bg_d,
     widget = wibox.container.background
 }
 
@@ -83,9 +83,9 @@ local hide_volume_adjust = gears.timer {
 awesome.connect_signal("signal::volume", function(vol, muted)
     volume_bar.value = vol
     if muted or vol == 0 then
-        volume_icon.markup = "<span foreground='" .. Beautiful.xcolor4 .. "'><b>󰖁</b></span>"
+        volume_icon.markup = "<span foreground='" .. Beautiful.blue .. "'><b>󰖁</b></span>"
     else
-        volume_icon.markup = "<span foreground='" .. Beautiful.xcolor4 .. "'><b>󰕾</b></span>"
+        volume_icon.markup = "<span foreground='" .. Beautiful.blue .. "'><b>󰕾</b></span>"
     end
 
     if volume_adjust.visible then

@@ -36,7 +36,7 @@ Naughty.config.presets.low = {
 
 Naughty.config.presets.critical = {
     font = Beautiful.font .. "10",
-    fg = Beautiful.xcolor1,
+    fg = Beautiful.red,
     bg = Beautiful.bg_normal,
     timeout = 0
 }
@@ -102,7 +102,7 @@ Naughty.connect_signal("request::display", function(n)
                         margins = dpi(4),
                         widget = Wibox.container.margin
                     },
-                    bg = Beautiful.lighter_bg,
+                    bg = Beautiful.bg1,
                     widget = Wibox.container.background
                 },
                 {
@@ -144,7 +144,7 @@ Naughty.connect_signal("request::display", function(n)
                 },
                 layout = Wibox.layout.fixed.vertical
             },
-            bg = Beautiful.darker_bg,
+            bg = Beautiful.black,
             border_width = 0,
             border_color = Beautiful.widget_border_color,
             shape = helpers.rrect(border_radius),

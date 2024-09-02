@@ -16,7 +16,7 @@ end
 
 local function build_textbox()
   if muted or volume <= 0 then
-    return wrap_icon("󰖁", Beautiful.selection) .. "<span foreground='" .. Beautiful.selection .. "'>" .. volume .. "%</span>"
+    return wrap_icon("󰖁", Beautiful.grey) .. "<span foreground='" .. Beautiful.grey .. "'>" .. volume .. "%</span>"
   end
   return wrap_icon("󰕾", Beautiful.foreground) .. "<span foreground='" .. Beautiful.foreground .. "'>" .. volume .. "%</span>"
 end

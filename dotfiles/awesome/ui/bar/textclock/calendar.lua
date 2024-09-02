@@ -9,7 +9,7 @@ local styles = {}
 
 styles.month = {
     padding = 5,
-    fg_color = Beautiful.selection,
+    fg_color = Beautiful.fg,
     markup = function(t) return t end,
 }
 local focus_style = {

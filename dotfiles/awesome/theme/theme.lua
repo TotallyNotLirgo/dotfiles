@@ -8,8 +8,8 @@ local theme = colors
 theme.font = Font
 theme.taglist_font = Font
 
-theme.bg_normal = colors.background
-theme.bg_focus = colors.selection
+theme.bg_normal = colors.bg0
+theme.bg_focus = colors.grey
 theme.bg_minimize = theme.bg_normal
 
 theme.fg_normal = colors.foreground
@@ -29,14 +29,14 @@ theme.gap_single_client = true
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- notification_[bg|fg|width|height|margin|border_color|border_width|shape|opacity]
-theme.titlebar_bg_focus = colors.background_dark
-theme.titlebar_bg_normal = colors.background
+theme.titlebar_bg_focus = colors.bg_d
+theme.titlebar_bg_normal = colors.bg0
 theme.titlebar_fg_normal = theme.fg_normal .. "50"
 theme.titlebar_fg_focus = theme.fg_normal
 
 theme.border_width = dpi(1)
-theme.border_color_normal = colors.background_dark
-theme.border_color_active = colors.comment
+theme.border_color_normal = colors.bg_d
+theme.border_color_active = colors.bg_blue
 theme.border_color_marked = colors.purple
 theme.border_single_client = false
 
