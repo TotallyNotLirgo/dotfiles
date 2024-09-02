@@ -66,7 +66,7 @@ lspconfig.pyright.setup {
                 useLibraryCodeForTypes = true,
                 typeCheckingMode = "basic",
                 diagnosticSeverityOverrides = {
-                    reportMissingParameterType = "warning",
+                    reportInvalidTypeForm = "none",
                 }
             }
         }

@@ -15,7 +15,7 @@ local up = "0B"
 local ip = ""
 
 local function wrap_icon(icon)
-  return "  <span font='FiraCode Nerd Font Mono 18'>" .. icon .."</span>"
+  return "<span font='FiraCode Nerd Font Mono 18'>" .. icon .."</span>"
 end
 
 local function build_widget()

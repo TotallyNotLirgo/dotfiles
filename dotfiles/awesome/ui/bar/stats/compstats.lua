@@ -15,7 +15,7 @@ local cpu = 0
 local disk = 0
 
 local function wrap_icon(icon)
-  return f"  <span font='{Font18}' >" .. icon .."</span> "
+  return f"<span font='{Font18}' >" .. icon .."</span> "
 end
 
 local function build_textbox()

@@ -13,5 +13,8 @@ with pkgs; [
     brave
     firefox
     inkscape
+    hplip # HP printer driver
+    rmview
+    restream
 ]
 
