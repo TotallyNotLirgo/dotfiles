@@ -13,14 +13,17 @@ local down = "0B"
 local up = "0B"
 local ip = ""
 
-local function wrap_icon(icon)
-  return "<span font='FiraCode Nerd Font Mono 18'>" .. icon .."</span>"
+local function wrap_icon(icon, color)
+  if color == nil then
+    color = Beautiful.foreground
+  end
+  return "<span font='FiraCode Nerd Font Mono 18' foreground='" .. color .. "'>" .. icon .. "</span>"
 end
 
 local function build_widget()
-  ip_widget.markup = wrap_icon("") .. " " .. ip
-  up_widget.markup = wrap_icon("") .. " " .. up
-  down_widget.markup = wrap_icon("") .. " " .. down
+  ip_widget.markup = wrap_icon("", Beautiful.blue) .. " " .. ip
+  up_widget.markup = wrap_icon("", Beautiful.blue) .. " " .. up
+  down_widget.markup = wrap_icon("", Beautiful.blue) .. " " .. down
 end
 
 local myip = wibox.widget {

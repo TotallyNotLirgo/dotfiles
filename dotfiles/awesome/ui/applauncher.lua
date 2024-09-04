@@ -4,12 +4,15 @@ local beautiful = require("beautiful")
 local dpi = require("beautiful.xresources").apply_dpi
 local gears = require("gears")
 local clickable_container = require("modules.clickable-container")
-local function generate_textbox(icon, launcher)
+local function generate_textbox(icon, launcher, color)
+  if color == nil then
+    color = beautiful.foreground
+  end
   return {
     {
       {
         widget = wibox.widget.textbox,
-        markup = icon,
+        markup = "<span foreground='" .. color .. "'>" .. icon .. "</span>",
         font = Font .. " 32",
         forced_height = 32,
       },
@@ -25,15 +28,15 @@ end
 local popupWidget = wibox.widget {
   {
     {
-      generate_textbox('󰖟', 'brave'),
-      generate_textbox('', 'alacritty'),
-      generate_textbox('󰓓', 'steam'),
-      generate_textbox('󰍳', 'prismlauncher'),
-      generate_textbox('', 'spotify'),
-      generate_textbox('', 'thunar'),
-      generate_textbox('', 'signal-desktop'),
-      generate_textbox('', 'discord'),
-      generate_textbox('', 'pgadmin4'),
+      generate_textbox('', 'alacritty', Beautiful.red),
+      generate_textbox('󰖟', 'brave', Beautiful.orange),
+      generate_textbox('', 'pgadmin4', Beautiful.yellow),
+      generate_textbox('󰍳', 'prismlauncher', Beautiful.green),
+      generate_textbox('', 'spotify', Beautiful.green),
+      generate_textbox('', 'signal-desktop', Beautiful.blue),
+      generate_textbox('󰓓', 'steam', Beautiful.diff_text),
+      generate_textbox('', 'thunar', Beautiful.purple),
+      generate_textbox('', 'discord', Beautiful.dark_purple),
       layout = wibox.layout.flex.horizontal,
     },
     widget = wibox.container.margin,

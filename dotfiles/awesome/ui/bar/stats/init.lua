@@ -6,13 +6,16 @@ local display = require("ui.bar.stats.display")
 local clickable_container = require("modules.clickable-container")
 
 
-local function generate_button(icon, launcher, font)
+local function generate_button(icon, launcher, color, font)
   if font == nil then
     font = Font24
   end
+  if color == nil then
+    color = Beautiful.foreground
+  end
   local widget = Helpers.bar_widget {
     {
-      Wibox.widget.textbox(f "<span font='{font}' >" .. icon .. "</span>"),
+      Wibox.widget.textbox(f "<span font='{font}' foreground='{color}'>{icon}</span>"),
       margins = dpi(6),
       widget = Wibox.container.margin,
     },
@@ -63,12 +66,12 @@ local function create_popup()
         {
           {
             display,
-            generate_button("󰄨", "alacritty --class floater -e htop"),
-            generate_button("󰡁", "nvidia-settings", Font18),
-            generate_button("󰂯", "blueman-manager", Font18),
-            generate_button("", "lxappearance"),
-            generate_button("", "pavucontrol"),
-            generate_button("󰖩", "nm-connection-editor"),
+            generate_button("", "lxappearance", Beautiful.yellow),
+            generate_button("󰖩", "nm-connection-editor", Beautiful.orange),
+            generate_button("󰄨", "alacritty --class floater -e htop", Beautiful.red),
+            generate_button("", "pavucontrol", Beautiful.purple),
+            generate_button("󰂯", "blueman-manager", Beautiful.blue, Font18),
+            generate_button("󰡁", "nvidia-settings", Beautiful.green, Font18),
             layout = Wibox.layout.fixed.horizontal,
           },
           left = dpi(10),

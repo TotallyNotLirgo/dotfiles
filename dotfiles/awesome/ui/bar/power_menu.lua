@@ -134,17 +134,27 @@ logoutButton:connect_signal(
 )
 
 -- Create a compstats widget
-local widget = awful.widget.button({
-  image = '/home/emilia/.local/share/icons/heart.svg',
-  buttons = {
-    awful.button({}, 1, function()
-      popup.visible = not popup.visible
-      popup.x = awful.screen.focused().geometry.x + awful.screen.focused().geometry.width / 2 - 200
-      popup.y = awful.screen.focused().geometry.y + awful.screen.focused().geometry.height / 2 - 75
-    end),
-  },
-})
-widget.font = 'FiraCode Nerd Font Mono 12'
+-- local widget = awful.widget.button({
+--   image = '/home/emilia/.local/share/icons/heart.svg',
+--   buttons = {
+--     awful.button({}, 1, function()
+--       popup.visible = not popup.visible
+--       popup.x = awful.screen.focused().geometry.x + awful.screen.focused().geometry.width / 2 - 200
+--       popup.y = awful.screen.focused().geometry.y + awful.screen.focused().geometry.height / 2 - 75
+--     end),
+--   },
+-- })
+local widget = wibox.widget.textbox("")
+widget.font = 'FiraCode Nerd Font Mono 24'
+widget.markup = "<span foreground='" .. Beautiful.red .. "'></span>"
+widget:connect_signal(
+  "button::press",
+  function()
+    popup.visible = not popup.visible
+    popup.x = awful.screen.focused().geometry.x + awful.screen.focused().geometry.width / 2 - 200
+    popup.y = awful.screen.focused().geometry.y + awful.screen.focused().geometry.height / 2 - 75
+  end
+)
 
 local powermenu = Helpers.bar_widget {
   {

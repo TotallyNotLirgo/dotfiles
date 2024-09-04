@@ -13,14 +13,17 @@ local ram = 0
 local cpu = 0
 local disk = 0
 
-local function wrap_icon(icon)
-  return f"<span font='{Font18}' >" .. icon .."</span> "
+local function wrap_icon(icon, color)
+  if color == nil then
+    color = Beautiful.foreground
+  end
+  return "<span font='FiraCode Nerd Font Mono 18' foreground='" .. color .. "'>" .. icon .. "</span>"
 end
 
 local function build_textbox()
-  ram_widget.markup = wrap_icon("󰄨") .. ram .. "GB "
-  cpu_widget.markup = wrap_icon("󰍛") .. cpu .. "% "
-  disk_widget.markup = wrap_icon("") .. disk .. "GB "
+  ram_widget.markup = wrap_icon("󰄨", Beautiful.blue) .. " " .. ram .. "GB "
+  cpu_widget.markup = wrap_icon("󰍛", Beautiful.blue) .. " "  .. cpu .. "% "
+  disk_widget.markup = wrap_icon("", Beautiful.blue) .. " "  .. disk .. "GB "
 end
 
 local compstats = wibox.widget {
