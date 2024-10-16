@@ -1,7 +1,7 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
-    networking.networkmanager.enable = true;
+    # networking.networkmanager.enable = true;
     services.printing.enable = true;
     hardware.pulseaudio.enable = true;
     programs.dconf.enable = true;
@@ -40,4 +40,8 @@
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     services.blueman.enable = true;
+    services.connman = {
+        enable = true;
+        package = pkgs.connmanFull;
+    };
 }

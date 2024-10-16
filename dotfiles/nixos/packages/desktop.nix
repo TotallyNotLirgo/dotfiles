@@ -7,6 +7,7 @@ with pkgs; [
     dracula-theme
     lxappearance # Theme manager
     papirus-icon-theme
+    numix-icon-theme
     networkmanagerapplet # Network manager icon in systray
     scrot # Screenshot tool
     sysstat # Network statistics in awesome

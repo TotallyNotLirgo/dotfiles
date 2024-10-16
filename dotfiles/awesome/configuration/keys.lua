@@ -161,7 +161,15 @@ client.connect_signal("request::default_keybindings", function()
   awful.keyboard.append_client_keybindings({
     awful.key({ ModKey }, "f",
       function(c)
-        c.fullscreen = not c.fullscreen
+        if c.fullscreen then
+          c.fullscreen = false
+          c.maximized = false
+          c.floating = true
+          awful.titlebar.show(c)
+        else
+          awful.titlebar.hide(c)
+          c.fullscreen = true
+        end
         c:raise()
       end,
       { description = "toggle fullscreen", group = "client" }),
@@ -172,7 +180,9 @@ client.connect_signal("request::default_keybindings", function()
       { description = "close", group = "client" }),
     awful.key({ ModKey }, "s",
       function(c)
-        awful.client.floating.toggle(c)
+        c.fullscreen = false
+        c.maximized = false
+        c.floating = not c.floating
         local x = awful.screen.focused().geometry.x
         local y = awful.screen.focused().geometry.y
         local sw = awful.screen.focused().geometry.width
@@ -218,6 +228,7 @@ client.connect_signal("request::default_keybindings", function()
     awful.key({ ModKey }, "m",
       function(c)
         c.maximized = not c.maximized
+        awful.titlebar.hide(c)
         c:raise()
       end,
       { description = "(un)maximize", group = "client" }),

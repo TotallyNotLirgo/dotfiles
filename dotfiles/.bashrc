@@ -66,7 +66,7 @@ function cdp() {
 function cds() {
     builtin cd "$@"
     if [[ -f ./shell.nix ]]; then
-        nix develop
+        nix-shell
     fi
 }
 

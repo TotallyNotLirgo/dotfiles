@@ -70,7 +70,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
       },
       nil,
       {
-        ui_systray,
+        -- ui_systray,
         ui_sound_control,
         ui_textclock,
         ui_battery,

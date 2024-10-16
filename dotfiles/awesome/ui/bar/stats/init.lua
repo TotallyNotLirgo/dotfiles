@@ -67,7 +67,7 @@ local function create_popup()
           {
             display,
             generate_button("", "lxappearance", Beautiful.yellow),
-            generate_button("󰖩", "nm-connection-editor", Beautiful.orange),
+            generate_button("󰖩", "connman-gtk", Beautiful.orange),
             generate_button("󰄨", "alacritty --class floater -e htop", Beautiful.red),
             generate_button("", "pavucontrol", Beautiful.purple),
             generate_button("󰂯", "blueman-manager", Beautiful.blue, Font18),

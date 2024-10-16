@@ -26,6 +26,7 @@ in
         xsel # Clipboard manager
         xarchiver # Archive manager
         home-manager
+        connman-gtk
     ]
     ++ gaming
     ++ office

@@ -45,12 +45,10 @@ local function floating_button(c)
             return icons_location .. "maximize.svg"
           end,
           function ()
-            c.floating = not c.floating
-            if c.floating then
-              awful.titlebar.show(c)
-            else
-              awful.titlebar.hide(c)
-            end
+            c.floating = false
+            c.maximized = false
+            c.fullscreen = false
+            awful.titlebar.hide(c)
           end
         ),
         widget = wibox.container.margin,

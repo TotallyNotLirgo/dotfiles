@@ -21,4 +21,5 @@ with pkgs; [
     wineWowPackages.stagingFull
     winetricks
     dbeaver-bin
+    nix-index
 ]
