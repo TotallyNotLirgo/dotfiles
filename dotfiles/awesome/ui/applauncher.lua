@@ -30,7 +30,7 @@ local popupWidget = wibox.widget {
     {
       generate_textbox('', 'alacritty', Beautiful.red),
       generate_textbox('󰖟', 'brave', Beautiful.orange),
-      generate_textbox('', 'pgadmin4', Beautiful.yellow),
+      generate_textbox('', 'dbeaver', Beautiful.yellow),
       generate_textbox('󰍳', 'prismlauncher', Beautiful.green),
       generate_textbox('', 'spotify', Beautiful.green),
       generate_textbox('', 'signal-desktop', Beautiful.blue),

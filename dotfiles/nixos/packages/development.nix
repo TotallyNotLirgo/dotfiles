@@ -20,4 +20,5 @@ with pkgs; [
     android-tools
     wineWowPackages.stagingFull
     winetricks
+    dbeaver-bin
 ]
