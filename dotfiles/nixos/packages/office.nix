@@ -16,5 +16,6 @@ with pkgs; [
     hplip # HP printer driver
     rmview
     restream
+    via
 ]
 

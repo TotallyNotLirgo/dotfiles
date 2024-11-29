@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-    # networking.networkmanager.enable = true;
+    networking.networkmanager.enable = true;
     services.printing.enable = true;
     hardware.pulseaudio.enable = true;
     programs.dconf.enable = true;
@@ -11,6 +11,9 @@
         rootless = {
             enable = true;
             setSocketVariable = true;
+        };
+        daemon.settings = {
+            bip = "172.21.0.2/24";
         };
     };
 
@@ -40,8 +43,12 @@
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     services.blueman.enable = true;
-    services.connman = {
+    services.avahi = {
         enable = true;
-        package = pkgs.connmanFull;
+        nssmdns4 = true;
+        openFirewall = true;
     };
+    services.udev.extraRules = ''
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+    '';
 }

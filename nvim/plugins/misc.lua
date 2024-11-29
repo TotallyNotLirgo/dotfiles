@@ -15,6 +15,8 @@ require('Comment').setup({
 })
 require('colorizer').setup({
     user_default_options = {
-        names = false
+        names = false,
+        rgb_fn = true,
+        hsl_fn = true,
     }
 })

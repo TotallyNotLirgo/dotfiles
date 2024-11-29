@@ -1,1 +1,2 @@
 *.lock
+dotfiles/nixos/custom.nix
