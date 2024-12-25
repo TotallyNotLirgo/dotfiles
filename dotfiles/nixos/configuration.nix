@@ -7,6 +7,7 @@
         ./programs.nix
         ./display.nix
         ./services.nix
+        ./custom.nix
     ];
 
     boot.loader.systemd-boot.enable = true;

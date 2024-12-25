@@ -41,21 +41,17 @@
     services.tumbler.enable = true; # Thumbnail support for images
     services.openssh.enable = true;
     networking.firewall.enable = false;
-    networking.extraHosts =
-        ''
-        127.0.0.1 winter15.gosredirector.ea.com
-        '';
-
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
     services.blueman.enable = true;
-    # services.connman = {
-    #     enable = true;
-    #     package = pkgs.connmanFull;
-    # };
-     services.udev.extraRules = ''
+    services.udev.extraRules = ''
         KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
     '';
     services.ratbagd.enable = true;
 
+    services.avahi = {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+    };
 }
