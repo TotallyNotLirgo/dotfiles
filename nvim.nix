@@ -57,6 +57,8 @@
     nvim-treesitter-parsers.java
     nvim-treesitter-parsers.go
     refactoring-nvim
+    vim-abolish
+    phpactor
     (
       nvim-treesitter.withPlugins (p: with p; [
         tree-sitter-nix
@@ -83,5 +85,6 @@
     python311Packages.docformatter
     nixd
     fzf
+    phpactor
   ];
 }

@@ -74,3 +74,4 @@ lspconfig.pyright.setup {
 }
 lspconfig.gopls.setup {}
 lspconfig.jdtls.setup {}
+lspconfig.phpactor.setup {}
