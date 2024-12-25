@@ -1,10 +1,9 @@
 require('nvim-autopairs').setup({})
 require('ibl').setup({ scope = { enabled = false } })
-require('auto-save').setup({})
 require('ftFT').setup({
     keys = { "f", "t", "F", "T" },
-    modes = {"n", "v"},   -- the modes this plugin works in.
-    hl_group = "VisualNOS",  -- this property specify the hi group
+    modes = { "n", "v" },   -- the modes this plugin works in.
+    hl_group = "VisualNOS", -- this property specify the hi group
     config = true
 })
 require('trouble').setup({})
@@ -18,3 +17,7 @@ require('colorizer').setup({
         names = false
     }
 })
+require('refactoring').setup({
+    show_success_message = true,
+})
+vim.keymap.set({ 'n', 'x' }, '<leader>re', ':Refactor extract<CR>', { desc = '[E]xtract' })

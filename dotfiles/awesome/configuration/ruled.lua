@@ -13,8 +13,12 @@ Ruled.client.connect_signal("request::rules", function()
       local ys = Awful.screen.focused().geometry.y
       local ws = Awful.screen.focused().geometry.width
       local hs = Awful.screen.focused().geometry.height
-      c.width = ws / 1.4
-      c.height = hs / 1.4
+      if c.width > ws / 1.4 then
+        c.width = ws / 1.4
+      end
+      if c.height > hs / 1.4 then
+        c.height = hs / 1.4
+      end
       c.x = xs + (ws - c.width) / 2
       c.y = ys + (hs - c.height) / 2
     end

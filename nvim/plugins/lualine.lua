@@ -4,7 +4,18 @@ require("lualine").setup({
   },
   sections = {
     lualine_b = { 'diagnostics' },
-    lualine_c = { { 'filename', path = 1 } },
+    lualine_c = {
+      {
+        'filename',
+        file_status = true,
+        path = 1,
+        symbols = {
+          modified = '',
+          readonly = '',
+          unnamed = '[No Name]',
+        }
+      }
+    },
     lualine_x = { "filetype" },
     lualine_y = {},
   },

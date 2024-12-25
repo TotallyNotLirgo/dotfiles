@@ -173,4 +173,4 @@ local warmer = {
     diff_text = "#2c485f",
 }
 
-return dark
+return warmer

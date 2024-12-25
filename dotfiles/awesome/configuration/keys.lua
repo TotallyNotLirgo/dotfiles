@@ -6,8 +6,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
 
-ModKey = "Mod4"
-
 -- {{{ Key bindings
 
 -- General Awesome keys

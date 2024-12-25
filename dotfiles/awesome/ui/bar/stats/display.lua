@@ -8,7 +8,7 @@ local type = "duplicated"
 local display_mode = "single"
 
 local function wrap_icon(icon)
-  return f"<span font='{Font24}' >" .. icon .."</span>"
+  return f "<span font='{Font24}' >" .. icon .. "</span>"
 end
 
 local function build_textbox()

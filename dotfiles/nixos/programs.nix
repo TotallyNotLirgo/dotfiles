@@ -9,11 +9,11 @@
         pinentryPackage = pkgs.pinentry-qt;
     };
     programs.xfconf.enable = true;
-    programs.thunar = {
+    programs.nix-ld = {
         enable = true;
-        plugins = with pkgs.xfce; [
-            thunar-media-tags-plugin
-            thunar-volman
+        libraries = with pkgs; [
+            gst_all_1.gst-plugins-good
+            webkitgtk_4_1
         ];
     };
 }

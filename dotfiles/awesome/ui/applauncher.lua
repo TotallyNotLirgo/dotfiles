@@ -28,14 +28,14 @@ end
 local popupWidget = wibox.widget {
   {
     {
-      generate_textbox('', 'alacritty', Beautiful.red),
-      generate_textbox('󰖟', 'brave', Beautiful.orange),
+      generate_textbox('', Terminal, Beautiful.red),
+      generate_textbox('󰖟', Browser, Beautiful.orange),
       generate_textbox('', 'dbeaver', Beautiful.yellow),
       generate_textbox('󰍳', 'prismlauncher', Beautiful.green),
       generate_textbox('', 'spotify', Beautiful.green),
       generate_textbox('', 'signal-desktop', Beautiful.blue),
       generate_textbox('󰓓', 'steam', Beautiful.diff_text),
-      generate_textbox('', 'thunar', Beautiful.purple),
+      generate_textbox('', FileManager, Beautiful.purple),
       generate_textbox('', 'discord', Beautiful.dark_purple),
       layout = wibox.layout.flex.horizontal,
     },

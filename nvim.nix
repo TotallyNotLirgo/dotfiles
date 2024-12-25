@@ -30,13 +30,13 @@
     onedark-nvim
     telescope-nvim
     telescope-ui-select-nvim
+    telescope-fzf-native-nvim
     nvim-web-devicons
     plenary-nvim
     nvim-tree-lua
     vim-sleuth
     nvim-autopairs
     indent-blankline-nvim
-    auto-save-nvim
     lualine-nvim
     gitsigns-nvim
     nvim-lspconfig
@@ -50,8 +50,13 @@
     trouble-nvim
     comment-nvim
     lsp_signature-nvim
+    oil-nvim
     undotree
     nvim-colorizer-lua
+    nvim-treesitter-parsers.vimdoc
+    nvim-treesitter-parsers.java
+    nvim-treesitter-parsers.go
+    refactoring-nvim
     (
       nvim-treesitter.withPlugins (p: with p; [
         tree-sitter-nix
@@ -60,6 +65,8 @@
         tree-sitter-lua
         tree-sitter-python
         tree-sitter-json
+        tree-sitter-sql
+        tree-sitter-java
       ])
     )
     git-lazydev
@@ -70,9 +77,11 @@
   extraPackages = with pkgs; [
     sumneko-lua-language-server
     pyright
+    jdt-language-server
     python311Packages.black
     python311Packages.isort
     python311Packages.docformatter
     nixd
+    fzf
   ];
 }

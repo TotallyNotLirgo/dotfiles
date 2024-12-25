@@ -41,4 +41,48 @@
         ];
     };
     programs.neovim = import ./nvim.nix { inherit pkgs; inherit inputs; };
+    programs.starship = {
+        enable = true;
+        enableBashIntegration = true;
+        settings = {
+            directory = {
+                truncation_length = 0;
+                style = "bold cyan";
+            };
+            git_branch = {
+                format = "[$symbol$branch]($style)";
+                style = "bold yellow";
+                symbol = " ";
+            };
+            git_status = {
+                format = "[\\[$modified$ahead_behind\\]]($style) ";
+                modified = "$count";
+                style = "bold yellow";
+            };
+            python = {
+                format = "[$symbol$pyenv_prefix($version )]($style)";
+                version_format = "$major.$minor";
+                symbol = "󱔎 ";
+                style = "bold #E5C07A";
+            };
+            nix_shell = {
+                format = "[$symbol shell]($style) ";
+                style = "bold #62AEEF";
+                symbol = "";
+            };
+            cmd_duration = {
+                format = "[\\[$duration\\]]($style) ";
+                min_time = 100;
+                show_milliseconds = true;
+                style = "bold #E5C07A";
+            };
+            package = {
+                disabled = true;
+            };
+            character = {
+                success_symbol = "[](#C678DD)";
+                error_symbol = "[](#E5C07A)";
+            };
+        };
+    };
 }

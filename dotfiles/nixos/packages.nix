@@ -26,7 +26,9 @@ in
         xsel # Clipboard manager
         xarchiver # Archive manager
         home-manager
-        connman-gtk
+        nemo-with-extensions
+        nemo-fileroller
+        file-roller
     ]
     ++ gaming
     ++ office

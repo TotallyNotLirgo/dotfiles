@@ -28,7 +28,7 @@ local function icon_button(icon, command)
 end
 
 local image = wibox.widget {
-  image = "/home/emilia/.local/share/icons/default-artwork.png",
+  image = AwesomeLocation .. "resources/icons/default-artwork.png",
   forced_height = 100,
   forced_width = 100,
   widget = wibox.widget.imagebox,

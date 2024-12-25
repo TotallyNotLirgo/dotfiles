@@ -17,4 +17,6 @@ with pkgs; [
     pavucontrol # Volume control
     pamixer # Volume control from terminal
     autorandr # Automatically change screen layout
+    piper
+    starship
 ]

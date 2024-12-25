@@ -22,4 +22,6 @@ with pkgs; [
     winetricks
     dbeaver-bin
     nix-index
+    uv
+    raylib
 ]

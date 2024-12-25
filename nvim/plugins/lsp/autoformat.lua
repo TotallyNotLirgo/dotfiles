@@ -11,5 +11,7 @@ conform.formatters.isort = { prepend_args = { '--profile', 'black', '--line-leng
 conform.formatters.black = { prepend_args = { '--line-length', '79' } }
 
 vim.keymap.set({ 'n' }, '<leader>f', function()
-    require('conform').format { async = true, lsp_fallback = true }
-end, { desc = '[F]ormat buffer' })
+    vim.cmd.w()
+    require('conform').format { async = false, lsp_fallback = true }
+    vim.cmd.w()
+end, { desc = '[F]ormat buffer and save' })

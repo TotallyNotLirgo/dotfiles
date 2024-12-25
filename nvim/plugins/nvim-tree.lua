@@ -7,6 +7,14 @@ local function on_attach(bufnr)
   vim.keymap.set('n', '<C-k>', '10k', opts())
 end
 require("nvim-tree").setup {
+  renderer = {
+    icons = {
+      modified_placement = "before",
+      glyphs = {
+        modified = "",
+      }
+    }
+  },
   diagnostics = {
     enable = true,
     show_on_dirs = true,
@@ -16,6 +24,11 @@ require("nvim-tree").setup {
       min = vim.diagnostic.severity.WARN,
       max = vim.diagnostic.severity.ERROR,
     },
+  },
+  modified = {
+    enable = true,
+    show_on_dirs = true,
+    show_on_open_dirs = true,
   },
   on_attach = on_attach
 }

@@ -8,7 +8,7 @@ AltKey = "Mod1"
 Terminal = "alacritty"
 Editor = "nvim"
 Browser = "brave"
-FileManager = "thunar"
+FileManager = "nemo"
 
 Wibox = require("wibox")
 Awful = require("awful")
@@ -17,5 +17,6 @@ Beautiful = require("beautiful")
 Naughty = require("naughty")
 Ruled = require "ruled"
 require("modules.fstring")
-AwesomeLocation = "/home/emilia/.config/home-manager/dotfiles/awesome/"
+HomeLocation = "/home/emilia/"
+AwesomeLocation = HomeLocation .. ".config/home-manager/dotfiles/awesome/"
 Helpers = require("helpers")
