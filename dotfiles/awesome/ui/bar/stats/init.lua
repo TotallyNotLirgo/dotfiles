@@ -2,7 +2,6 @@ local dpi = require("beautiful.xresources").apply_dpi
 local network = require("ui.bar.stats.network")
 local compstats = require("ui.bar.stats.compstats")
 local notifications = require("ui.bar.stats.notifications")
-local display = require("ui.bar.stats.display")
 local clickable_container = require("modules.clickable-container")
 
 
@@ -65,7 +64,7 @@ local function create_popup()
         },
         {
           {
-            display,
+            generate_button("󰍹", "arandr --class floater", Beautiful.foreground),
             generate_button("", "lxappearance", Beautiful.yellow),
             generate_button("󰖩", "nm-connection-editor", Beautiful.orange),
             generate_button("󰄨", "alacritty --class floater -e htop", Beautiful.red),

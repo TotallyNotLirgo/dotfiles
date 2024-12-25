@@ -55,8 +55,10 @@
                 symbol = " ";
             };
             git_status = {
-                format = "[\\[$modified$ahead_behind\\]]($style) ";
-                modified = "$count";
+                format = "[\\[$untracked$modified$deleted$ahead_behind\\]]($style) ";
+                modified = "~$count";
+                untracked = "+$count";
+                deleted = "-$count";
                 style = "bold yellow";
             };
             python = {
@@ -82,6 +84,15 @@
             character = {
                 success_symbol = "[](#C678DD)";
                 error_symbol = "[](#E5C07A)";
+            };
+            username = {
+                format = "[$user]($style) ";
+                style_user = "bold #62AEEF";
+            };
+            hostname = {
+                format = "[$ssh_symbol]($style) ";
+                style = "bold #62AEEF";
+                ssh_symbol = "󰖟";
             };
         };
     };
