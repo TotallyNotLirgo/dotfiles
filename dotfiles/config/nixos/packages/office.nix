@@ -18,5 +18,6 @@ with pkgs; [
     restream
     obsidian
     via
+    stow
 ]
 

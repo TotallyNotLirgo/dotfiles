@@ -1,20 +1,21 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, xdg, ... }:
 {
     home.username = "emilia";
     home.homeDirectory = "/home/emilia";
     home.stateVersion = "24.05";
 
     home.file = {
-        ".config/alacritty".source = dotfiles/alacritty;
-        ".config/awesome".source = dotfiles/awesome;
-        ".local/share/backgrounds".source = dotfiles/backgrounds;
-        ".config/nixos".source = dotfiles/nixos;
-        ".config/picom".source = dotfiles/picom;
+        ".config/alacritty".source = dotfiles/config/alacritty;
+        ".config/awesome".source = dotfiles/config/awesome;
+        ".config/nixos".source = dotfiles/config/nixos;
+        ".config/picom".source = dotfiles/config/picom;
+        ".local/share/applications/Calculator.desktop".source = dotfiles/local/share/applications/Calculator.desktop;
+        ".local/share/backgrounds".source = dotfiles/local/share/backgrounds;
+        ".local/share/icons/calculator.svg".source = dotfiles/local/share/icons/calculator.svg;
         ".bashrc".source = dotfiles/.bashrc;
         ".tmux.conf".source = dotfiles/.tmux.conf;
         ".Xmodmap".source = dotfiles/.Xmodmap;
         ".Xresources".source = dotfiles/.Xresources;
-        ".local/share/applications/Calculator.desktop".source = dotfiles/Calculator.desktop;
     };
     programs.home-manager.enable = true;
     nixpkgs = {

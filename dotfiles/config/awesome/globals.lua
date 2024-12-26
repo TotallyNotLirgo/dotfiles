@@ -18,5 +18,5 @@ Naughty = require("naughty")
 Ruled = require "ruled"
 require("modules.fstring")
 HomeLocation = "/home/emilia/"
-AwesomeLocation = HomeLocation .. ".config/home-manager/dotfiles/awesome/"
+AwesomeLocation = HomeLocation .. ".config/awesome/"
 Helpers = require("helpers")
