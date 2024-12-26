@@ -14,6 +14,7 @@
         ".tmux.conf".source = dotfiles/.tmux.conf;
         ".Xmodmap".source = dotfiles/.Xmodmap;
         ".Xresources".source = dotfiles/.Xresources;
+        ".local/share/applications/Calculator.desktop".source = dotfiles/Calculator.desktop;
     };
     programs.home-manager.enable = true;
     nixpkgs = {
@@ -38,6 +39,18 @@
                     };
                 };
             })
+        ];
+    };
+    programs.rofi = {
+        enable = true;
+        theme = dotfiles/rofi.rasi;
+        pass.enable = true;
+        extraConfig = {
+            modi = "drun,run,calc,combi";
+            combi-modi = "drun,run,calc";
+        };
+        plugins = with pkgs; [
+            rofi-calc
         ];
     };
     programs.neovim = import ./nvim.nix { inherit pkgs; inherit inputs; };

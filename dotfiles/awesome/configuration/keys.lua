@@ -52,8 +52,7 @@ awful.keyboard.append_global_keybindings({
     end,
     { description = "Open a dedicated application", group = "launcher" }),
   awful.key({ ModKey }, "space", function()
-    menubar.refresh()
-    menubar.show()
+    awful.spawn.with_shell("rofi -show drun -show-icons")
   end, { description = "show the menubar", group = "launcher" }),
 })
 

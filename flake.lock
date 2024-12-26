@@ -1,0 +1,154 @@
+{
+  "nodes": {
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721804110,
+        "narHash": "sha256-i4jINRazBKPqlaS+qhlP+kV/UHEq3vs5itfpblqu4ZM=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "af70fc502a15d7e1e4c5a4c4fc8e06c2ec561e0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1721562059,
+        "narHash": "sha256-Tybxt65eyOARf285hMHIJ2uul8SULjFZbT9ZaEeUnP8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "68c9ed8bbed9dfce253cc91560bf9043297ef2fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nvim-copilot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720640453,
+        "narHash": "sha256-qlIbC7JCrhkv1G2UZA/TOuaQgFpDQt99dPnsPVFyMug=",
+        "owner": "github",
+        "repo": "copilot.vim",
+        "rev": "25f73977033c597d530c7ab0e211d99b60927d2d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "github",
+        "repo": "copilot.vim",
+        "type": "github"
+      }
+    },
+    "nvim-ftFT": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1706865934,
+        "narHash": "sha256-y3TL64lkqLWx+GoG1Pj1DSQgMnL5cwtqOP5wsXVdz8k=",
+        "owner": "gukz",
+        "repo": "ftFT.nvim",
+        "rev": "f3e43c9584e14b27f04c27a95a9d9f0e58dfec02",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gukz",
+        "repo": "ftFT.nvim",
+        "type": "github"
+      }
+    },
+    "nvim-lazydev": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721897868,
+        "narHash": "sha256-D5gP2rVPYoWc8hslTrH7Z90cE7XEu+tfkD6FZzY/iPk=",
+        "owner": "folke",
+        "repo": "lazydev.nvim",
+        "rev": "491452cf1ca6f029e90ad0d0368848fac717c6d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "lazydev.nvim",
+        "type": "github"
+      }
+    },
+    "nvim-luvit-meta": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705776742,
+        "narHash": "sha256-zAAptV/oLuLAAsa2zSB/6fxlElk4+jNZd/cPr9oxFig=",
+        "owner": "Bilal2453",
+        "repo": "luvit-meta",
+        "rev": "ce76f6f6cdc9201523a5875a4471dcfe0186eb60",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Bilal2453",
+        "repo": "luvit-meta",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nvim-copilot": "nvim-copilot",
+        "nvim-ftFT": "nvim-ftFT",
+        "nvim-lazydev": "nvim-lazydev",
+        "nvim-luvit-meta": "nvim-luvit-meta",
+        "spicetify-nix": "spicetify-nix"
+      }
+    },
+    "spicetify-nix": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721880720,
+        "narHash": "sha256-uZ78gVg/lzP6rWi5WYO3TyFeFqVDjJvrJZHOqgpMVIk=",
+        "owner": "Gerg-L",
+        "repo": "spicetify-nix",
+        "rev": "61bc3bb1d2fc56913c6f0a6917d46b35e6e4d065",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gerg-L",
+        "repo": "spicetify-nix",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

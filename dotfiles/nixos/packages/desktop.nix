@@ -1,6 +1,7 @@
 { pkgs, ... }:
 with pkgs; [
     xorg.xinit
+    xorg.xkill
     dunst # Notification daemon
     picom # Shadow and transparency
     j4-dmenu-desktop # Application launcher

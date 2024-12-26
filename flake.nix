@@ -40,8 +40,8 @@
         inherit pkgs;
         extraSpecialArgs = { inherit inputs; };
         modules = [
-            ./home.nix
-            ./spicetify.nix
+          ./home.nix
+          ./spicetify.nix
         ];
       };
     };

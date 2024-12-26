@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Calculator
+Comment=Calculator and conversion tool
+Exec=rofi -show calc -modi calc -no-show-match -no-sort -automatic-save-to-history
+Icon=/home/emilia/.config/home-manager/dotfiles/icons/calculator.svg
+Terminal=false
+Type=Application
+Categories=Office;

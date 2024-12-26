@@ -10,7 +10,10 @@
         ./custom.nix
     ];
 
-    boot.loader.systemd-boot.enable = true;
+    boot.loader.systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+    };
     boot.loader.efi.canTouchEfiVariables = true;
 
     networking.hostName = "nixos";
@@ -26,6 +29,7 @@
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     environment.sessionVariables = {
         LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+        GTK_THEME = "Dracula";
     };
     # system.copySystemConfiguration = true;
     system.stateVersion = "24.05"; # Did you read the comment?
