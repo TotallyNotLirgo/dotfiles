@@ -115,7 +115,7 @@ local function create_notificaton_widget()
   if notification_n == 0 then
     return nil
   end
-  header.markup = f"<span weight='bold'>Notifications ({notification_n}):</span>"
+  header.markup = "<span weight='bold'>Notifications (" .. notification_n .. "):</span>"
   local actual_notifications = get_notifications()
   actual_notifications.layout = wibox.layout.fixed.vertical
   actual_notifications.spacing = Beautiful.useless_gap * 2

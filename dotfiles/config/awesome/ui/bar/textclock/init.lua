@@ -1,5 +1,4 @@
 local wibox = require("wibox")
-local dpi = require("beautiful.xresources").apply_dpi
 local gears = require("gears")
 local clickable_container = require("modules.clickable-container")
 local cal_toggle = require("ui.bar.textclock.calendar")
@@ -11,7 +10,7 @@ local font = Font .. " Bold 12"
 local textclock = Helpers.bar_widget {
       {
         {
-          widget = wibox.widget.textclock(f'<span font="{font}">%a %d-%m-%Y %H:%M:%S</span>', 1),
+          widget = wibox.widget.textclock('<span font="' .. font .. '">%a %d-%m-%Y %H:%M:%S</span>', 1),
           align = "center",
         },
         widget = wibox.container.margin,

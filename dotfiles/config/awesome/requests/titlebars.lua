@@ -2,6 +2,7 @@ local titlebar_buttons = require("ui.titlebar_buttons")
 
 client.connect_signal("request::titlebars", function(c)
   local top_titlebar = Awful.titlebar(c, {})
+  top_titlebar.enable_tooltip = false
   local buttons = Gears.table.join(
     Awful.button({}, 1, function()
       client.focus = c
@@ -27,12 +28,14 @@ client.connect_signal("request::titlebars", function(c)
       buttons = buttons,
     },
     {
-      titlebar_buttons.sticky_button(c),
-      titlebar_buttons.floating_button(c),
-      titlebar_buttons.close_button(c),
-      layout = Wibox.layout.fixed.horizontal()
+      titlebar_buttons.StickyButton:get_widget(c),
+      titlebar_buttons.FloatingButton:get_widget(c),
+      titlebar_buttons.CloseButton:get_widget(c),
+      layout = Wibox.layout.fixed.horizontal(),
+      forced_width = 100,
     },
     layout = Wibox.layout.align.horizontal,
+    expand = "none",
     widget = Wibox.container.margin,
     margins = 2,
   }

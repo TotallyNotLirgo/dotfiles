@@ -5,88 +5,85 @@ local clickable_container = require("modules.clickable-container")
 
 local icons_location = AwesomeLocation .. "resources/icons/"
 
+local Button = {}
 
-local function sticky_button(c)
-  return wibox.widget {
-    {
-      {
-        awful.titlebar.widget.button(
-          c,
-          "",
-          function()
-            if c.sticky then
-              return icons_location .. "unsticky.svg"
-            end
-            return icons_location .. "sticky.svg"
-          end,
-          function ()
-            c.sticky = not c.sticky
-            c.ontop = c.sticky
-          end
-        ),
-        widget = wibox.container.margin,
-        margins = 2,
-      },
-      widget = clickable_container
-    },
-  widget = wibox.container.background,
-  shape = gears.shape.rounded_bar,
-  }
+function Button:new(o)
+  o = o or {}
+  setmetatable(o, self)
+  self.__index = self
+  return o
 end
 
-local function floating_button(c)
+function Button:get_widget(c)
+  self.c = c
   return wibox.widget {
     {
       {
         awful.titlebar.widget.button(
-          c,
-          "",
-          function()
-            return icons_location .. "maximize.svg"
-          end,
-          function ()
-            c.floating = false
-            c.maximized = false
-            c.fullscreen = false
-            awful.titlebar.hide(c)
-          end
+          c, "",
+          function() return self:get_icon() end,
+          function() self:on_click() end
         ),
         widget = wibox.container.margin,
         margins = 2,
       },
-      widget = clickable_container
-    },
-  widget = wibox.container.background,
-  shape = gears.shape.rounded_bar,
-  }
-end
-
-local function close_button(c)
-  return wibox.widget {
-    {
-      {
-        awful.titlebar.widget.button(
-          c,
-          "",
-          function()
-            return icons_location .. "close.svg"
-          end,
-          function ()
-            c:kill()
-          end
-        ),
-        widget = wibox.container.margin,
-        margins = 2,
-      },
-      widget = clickable_container
+      widget = clickable_container,
     },
     widget = wibox.container.background,
     shape = gears.shape.rounded_bar,
   }
 end
 
+function Button:on_click()
+end
+
+function Button:get_icon()
+end
+
+----------------------
+
+local StickyButton = Button:new()
+
+function StickyButton:on_click()
+  self.c.sticky = not self.c.sticky
+  self.c.ontop = self.c.sticky
+end
+
+function StickyButton:get_icon()
+  return icons_location .. (self.c.sticky and "unsticky.svg" or "sticky.svg")
+end
+
+----------------------
+
+local FloatingButton = Button:new()
+
+function FloatingButton:on_click()
+  self.c.floating = false
+  self.c.maximized = false
+  self.c.fullscreen = false
+  awful.titlebar.hide(self.c)
+end
+
+function FloatingButton:get_icon()
+  return icons_location .. "maximize.svg"
+end
+
+----------------------
+
+local CloseButton = Button:new()
+
+function CloseButton:on_click()
+  self.c:kill()
+end
+
+function CloseButton:get_icon()
+  return icons_location .. "close.svg"
+end
+
+----------------------
+
 return {
-  sticky_button = sticky_button,
-  floating_button = floating_button,
-  close_button = close_button,
+  StickyButton = StickyButton,
+  FloatingButton = FloatingButton,
+  CloseButton = CloseButton,
 }

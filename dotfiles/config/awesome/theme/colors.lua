@@ -1,3 +1,4 @@
+--- @diagnostic disable: unused-local
 local dark = {
     black = "#181a1f",
     bg0 = "#282c34",
@@ -27,6 +28,7 @@ local dark = {
     diff_change = "#1c3448",
     diff_text = "#2c5372",
 }
+--- @diagnostic disable: unused-local
 local darker = {
     black = "#0e1013",
     bg0 = "#1f2329",
@@ -56,6 +58,7 @@ local darker = {
     diff_change = "#172a3a",
     diff_text = "#274964",
 }
+--- @diagnostic disable: unused-local
 local cool = {
     black = "#151820",
     bg0 = "#242b38",
@@ -85,6 +88,7 @@ local cool = {
     diff_change = "#18344c",
     diff_text = "#265478",
 }
+--- @diagnostic disable: unused-local
 local deep = {
     black = "#0c0e15",
     bg0 = "#1a212e",
@@ -114,6 +118,7 @@ local deep = {
     diff_change = "#102b40",
     diff_text = "#1c4a6e",
 }
+--- @diagnostic disable: unused-local
 local warm = {
     black = "#191a1c",
     bg0 = "#2c2d30",
@@ -143,6 +148,7 @@ local warm = {
     diff_change = "#203444",
     diff_text = "#32526c",
 }
+--- @diagnostic disable: unused-local
 local warmer = {
     black = "#101012",
     bg0 = "#232326",

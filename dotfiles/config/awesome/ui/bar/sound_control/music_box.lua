@@ -9,7 +9,7 @@ local clickable_container = require("modules.clickable-container")
 local function icon_button(icon, command)
   local widget = Helpers.bar_widget {
     {
-      Wibox.widget.textbox(f "<span font='{Font32}' >" .. icon .. "</span>"),
+      Wibox.widget.textbox("<span font='".. Font32 .. "' >" .. icon .. "</span>"),
       margins = dpi(6),
       widget = Wibox.container.margin,
     },
@@ -123,9 +123,9 @@ awesome.connect_signal(
     position.text = p
     ratio.value = r
     if s == "Playing" then
-      play_pause.children[1].children[1].children[1].children[1].markup = f "<span font='{Font32}'></span>"
+      play_pause.children[1].children[1].children[1].children[1].markup = "<span font='" .. Font32 .. "'></span>"
     else
-      play_pause.children[1].children[1].children[1].children[1].markup = f "<span font='{Font32}'></span>"
+      play_pause.children[1].children[1].children[1].children[1].markup = "<span font='" .. Font32 .. "'></span>"
     end
   end
 )

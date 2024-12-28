@@ -1,6 +1,5 @@
 local clickable_container = require("modules.clickable-container")
 local ui_textclock = require("ui.bar.textclock")
-local ui_systray = require("ui.bar.systray")
 local ui_tasklist = require("ui.bar.tasklist")
 local ui_applauncher = require("ui.applauncher")
 local ui_power_menu = require("ui.bar.power_menu")
@@ -70,7 +69,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
       },
       nil,
       {
-        -- ui_systray,
         ui_sound_control,
         ui_textclock,
         ui_battery,

@@ -14,7 +14,7 @@ local function generate_button(icon, launcher, color, font)
   end
   local widget = Helpers.bar_widget {
     {
-      Wibox.widget.textbox(f "<span font='{font}' foreground='{color}'>{icon}</span>"),
+      Wibox.widget.textbox("<span font='" .. font .. "' foreground='" .. color .. "'>" .. icon .. "</span>"),
       margins = dpi(6),
       widget = Wibox.container.margin,
     },
@@ -34,7 +34,7 @@ end
 
 local stats_widget = Helpers.bar_widget {
   {
-    Wibox.widget.textbox(f "<span font='{Font18}' >󰇘</span>"),
+    Wibox.widget.textbox("<span font='" .. Font18 .. "' >󰇘</span>"),
     widget = Wibox.container.margin,
     margins = dpi(10),
   },

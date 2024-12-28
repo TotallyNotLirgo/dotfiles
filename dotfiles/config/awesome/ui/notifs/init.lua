@@ -110,7 +110,7 @@ Naughty.connect_signal("request::display", function(n)
                         {
                             {
                                 step_function = Wibox.container.scroll.step_functions.nonlinear_back_and_forth,
-                                Wibox.widget.textbox(f "<span weight='bold'>{n.title}</span>"),
+                                Wibox.widget.textbox("<span weight='bold'>" .. n.title .. "</span>"),
                                 forced_width = dpi(320),
                                 speed = 50,
                                 widget = Wibox.container.scroll.horizontal
