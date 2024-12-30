@@ -10,8 +10,10 @@
         ".config/nixos".source = dotfiles/config/nixos;
         ".config/picom".source = dotfiles/config/picom;
         ".local/share/applications/Calculator.desktop".source = dotfiles/local/share/applications/Calculator.desktop;
+        ".local/share/applications/Umlet.desktop".source = dotfiles/local/share/applications/Umlet.desktop;
         ".local/share/backgrounds".source = dotfiles/local/share/backgrounds;
         ".local/share/icons/calculator.svg".source = dotfiles/local/share/icons/calculator.svg;
+        ".local/share/icons/umlet.svg".source = dotfiles/local/share/icons/umlet.svg;
         ".bashrc".source = dotfiles/.bashrc;
         ".tmux.conf".source = dotfiles/.tmux.conf;
         ".Xmodmap".source = dotfiles/.Xmodmap;
