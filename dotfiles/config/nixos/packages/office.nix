@@ -19,5 +19,6 @@ with pkgs; [
     obsidian
     via
     stow
+    umlet
 ]
 

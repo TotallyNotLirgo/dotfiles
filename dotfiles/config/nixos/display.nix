@@ -1,7 +1,13 @@
 { pkgs, ... }:
 
 {
-    services.displayManager.defaultSession = "none+awesome";
+    services.displayManager = {
+        sddm = {
+            enable = true;
+            theme = "sugar-dark";
+        };
+        defaultSession = "none+awesome";
+    };
     services.xserver = {
         enable = true;
         windowManager.awesome = {
@@ -18,25 +24,7 @@
                 }
             );
         };
-        displayManager = {
-            lightdm = {
-                enable = true;
-                background = "/etc/nixos/backgrounds/WindRoseWallpaper.png";
-                greeter.enable = true;
-                greeters.slick = {
-                    enable = true;
-                    theme.name = "Dracula";
-                    iconTheme.name = "Papirus";
-                    cursorTheme.name = "Dracula-cursors";
-                    extraConfig = ''
-                        user-background = false
-                        '';
-                };
-            };
-        };
     };
-    services.xrdp.enable = true;
-    services.xrdp.defaultWindowManager = "awesome";
 
     fonts.packages = with pkgs; [
         (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })

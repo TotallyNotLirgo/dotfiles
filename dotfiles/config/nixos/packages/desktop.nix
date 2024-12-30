@@ -2,7 +2,7 @@
 with pkgs; [
     xorg.xinit
     xorg.xkill
-    dunst # Notification daemon
+    mako # Notification daemon
     picom # Shadow and transparency
     j4-dmenu-desktop # Application launcher
     dracula-theme
@@ -20,4 +20,6 @@ with pkgs; [
     autorandr # Automatically change screen layout
     piper
     starship
+    libsForQt5.qt5.qtgraphicaleffects
+    (callPackage ./sddm_theme.nix {}).sddm-theme
 ]
