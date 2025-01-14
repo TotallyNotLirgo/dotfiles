@@ -1,6 +1,5 @@
 { pkgs, ... }:
 with pkgs; [
-    cnijfilter2 # Canon printer driver
     viewnior # Image viewer
     haruna # Video player
     drawing # Image editor
@@ -13,7 +12,6 @@ with pkgs; [
     brave
     firefox
     inkscape
-    hplip # HP printer driver
     rmview
     restream
     obsidian

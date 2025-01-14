@@ -75,3 +75,12 @@ lspconfig.pyright.setup {
 lspconfig.gopls.setup {}
 lspconfig.jdtls.setup {}
 lspconfig.phpactor.setup {}
+lspconfig.cssls.setup {}
+lspconfig.html.setup {}
+lspconfig.tsserver.setup {
+    init_options = {
+        tsserver = {
+            path = "/nix/store/alw6svgjp7172h9wssjqj2gm8bi7b4zp-typescript-5.5.3/lib/node_modules/typescript/lib"
+        }
+    },
+}

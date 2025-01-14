@@ -28,7 +28,16 @@
 
     fonts.packages = with pkgs; [
         (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
+        noto-fonts-color-emoji
     ];
+    fonts.fontconfig = {
+        defaultFonts = {
+            sansSerif = ["Liberation Sans" "Noto Color Emoji" "DejaVu Sans"];
+            serif = ["Liberation Serif" "Noto Color Emoji" "DejaVu Serif"];
+            monospace = ["FiraMono Nerd Font" "FiraCode Nerd Font"];
+            emoji = ["Noto Color Emoji" "FiraCode Nerd Font"];
+        };
+    };
 }
 
 

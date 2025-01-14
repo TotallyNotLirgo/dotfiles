@@ -67,7 +67,7 @@ local function create_popup()
             generate_button("󰍹", "arandr --class floater", Beautiful.foreground),
             generate_button("", "lxappearance", Beautiful.yellow),
             generate_button("󰖩", "nm-connection-editor", Beautiful.orange),
-            generate_button("󰄨", "alacritty --class floater -e htop", Beautiful.red),
+            generate_button("󰄨", "kitty --class floater -e htop", Beautiful.red),
             generate_button("", "pavucontrol", Beautiful.purple),
             generate_button("󰂯", "blueman-manager", Beautiful.blue, Font18),
             generate_button("󰡁", "nvidia-settings", Beautiful.green, Font18),

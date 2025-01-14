@@ -20,6 +20,59 @@
         ".Xresources".source = dotfiles/.Xresources;
     };
     programs.home-manager.enable = true;
+    programs.kitty = {
+        enable = true;
+        settings = {
+            foreground = "#979eab";
+            background = "#282c34";
+            color0 = "#282c34";
+            color1 = "#e06c75";
+            color2 = "#98c379";
+            color3 = "#e5c07b";
+            color4 = "#61afef";
+            color5 = "#be5046";
+            color6 = "#56b6c2";
+            color7 = "#979eab";
+            color8 = "#393e48";
+            color9 = "#d19a66";
+            color10 = "#56b6c2";
+            color11 = "#e5c07b";
+            color12 = "#61afef";
+            color13 = "#be5046";
+            color14 = "#56b6c2";
+            color15 = "#abb2bf";
+            active_tab_foreground = "#abb2bf";
+            active_tab_background = "#3B3F4C";
+            inactive_tab_foreground = "#abb2bf";
+            inactive_tab_background = "#31353F";
+            active_tab_font_style = "normal";
+
+            repaint_delay = 5;
+            input_delay = 1;
+            confirm_os_window_close = 0;
+            font_size = 13;
+            tab_bar_style = "powerline";
+            tab_bar_min_tabs = 0;
+            tab_title_template = "{f'{fmt.fg._98C379} {fmt.fg.tab}' if tab.active_exe == 'nvim' else f'{fmt.fg._E5C07B}󱔎 {fmt.fg.tab}' if tab.active_exe.startswith('python') else f'{fmt.fg._E06B74} {fmt.fg.tab}'}";
+        };
+        keybindings = {
+            "alt+1" = "goto_tab 1";
+            "alt+2" = "goto_tab 2";
+            "alt+3" = "goto_tab 3";
+            "alt+4" = "goto_tab 4";
+            "alt+5" = "goto_tab 5";
+            "alt+6" = "goto_tab 6";
+            "alt+7" = "goto_tab 7";
+            "alt+8" = "goto_tab 8";
+            "alt+9" = "goto_tab 9";
+            "alt+0" = "goto_tab 10";
+            "ctrl+t" = "new_tab_with_cwd";
+            "alt+s" = "new_window";
+            "alt+q" = "close_window";
+            "alt+j" = "prev_window";
+            "alt+k" = "next_window";
+        };
+    };
     nixpkgs = {
         overlays = [
             (final: prev: {
@@ -57,6 +110,16 @@
         ];
     };
     programs.neovim = import ./nvim.nix { inherit pkgs; inherit inputs; };
+    programs.helix = {
+        enable = true;
+    };
+    programs.broot = {
+        enable = true;
+        enableBashIntegration = true;
+        settings = {
+            modal = true;
+        };
+    };
     programs.starship = {
         enable = true;
         enableBashIntegration = true;

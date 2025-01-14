@@ -59,6 +59,8 @@
     refactoring-nvim
     vim-abolish
     phpactor
+    rustaceanvim
+    vim-visual-multi
     (
       nvim-treesitter.withPlugins (p: with p; [
         tree-sitter-nix
@@ -69,6 +71,8 @@
         tree-sitter-json
         tree-sitter-sql
         tree-sitter-java
+        tree-sitter-rust
+        tree-sitter-ruby
       ])
     )
     git-lazydev
@@ -86,5 +90,9 @@
     nixd
     fzf
     phpactor
+    ruby-lsp
+    vscode-langservers-extracted
+    typescript-language-server
+    typescript
   ];
 }

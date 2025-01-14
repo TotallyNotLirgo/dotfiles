@@ -2,7 +2,7 @@ Ruled.client.connect_signal("request::rules", function()
   Ruled.client.append_rule {
     id = "global",
     rule = {},
-    except_any = { class = { "Alacritty", "Brave-browser", "Spotify" } },
+    except_any = { class = { "Alacritty", "kitty", "Brave-browser", "Spotify" } },
     properties = {
       floating = true,
       titlebars_enabled = true,
@@ -25,7 +25,7 @@ Ruled.client.connect_signal("request::rules", function()
   }
   Ruled.client.append_rule {
     id = "global",
-    rule_any = { class = { "Alacritty", "Brave-browser", "Spotify" } },
+    rule_any = { class = { "Alacritty", "kitty", "Brave-browser", "Spotify" } },
     properties = {
       focus = Awful.client.focus.filter,
       raise = true,

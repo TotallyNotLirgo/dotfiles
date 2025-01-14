@@ -49,7 +49,7 @@ compstats:connect_signal(
   "button::press",
   function(_, _, _, button)
     if button == 1 then
-      awful.spawn("alacritty --class floater -e htop", {
+      awful.spawn("kitty --class floater -e htop", {
         floating = true,
         ontop = true,
         placement = awful.placement.centered

@@ -29,6 +29,7 @@ in
         nemo-with-extensions
         nemo-fileroller
         file-roller
+        wireguard-tools
     ]
     ++ gaming
     ++ office

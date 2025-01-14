@@ -88,8 +88,8 @@ alias ":wqa"="exit"
 
 alias nixos-reload="home-manager switch; sudo nixos-rebuild switch"
 
-if [ -z "$TMUX" ]; then
-  tmux
-fi
+# if [ -z "$TMUX" ]; then
+#   tmux
+# fi
 
 eval "$(starship init bash)"

@@ -20,6 +20,9 @@ vim.keymap.set({ "n", "v", "i", "t", }, "<MiddleMouse>", "<Nop>")
 vim.keymap.set({ "n", "v", "i", "t", }, "<2-LeftMouse>", "<Nop>")
 vim.keymap.set({ "n", "v", "i", "t", }, "<2-RightMouse>", "<Nop>")
 vim.keymap.set({ "n", "v", "i", "t", }, "<2-MiddleMouse>", "<Nop>")
+vim.keymap.set({ "n", "v", "i", "t", }, "<3-LeftMouse>", "<Nop>")
+vim.keymap.set({ "n", "v", "i", "t", }, "<3-RightMouse>", "<Nop>")
+vim.keymap.set({ "n", "v", "i", "t", }, "<3-MiddleMouse>", "<Nop>")
 
 vim.keymap.set({ "v" }, "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set({ "v" }, "K", ":m '<-2<CR>gv=gv")
@@ -32,7 +35,7 @@ vim.keymap.set({ "n" }, "<leader>X", ":!chmod -x %<CR>", { desc = "Make not e[X]
 
 vim.keymap.set({ "n" }, "<leader>R", ":LspRestart<CR>", { desc = "[R]estart LSP", })
 vim.keymap.set({ "n" }, "gd", ":Lspsaga goto_definition<CR>", { desc = "[G]o to [D]efinition", })
-vim.keymap.set({ "n" }, "K", ":Lspsaga peek_definition<CR>")
+vim.keymap.set({ "n" }, "K", ":Lspsaga hover_doc<CR>")
 vim.keymap.set({ "n" }, "<leader>o", ":Lspsaga outline<CR>", { desc = "Open [O]utline", })
 vim.keymap.set({ "n" }, "<leader>ee", ":Lspsaga show_line_diagnostics<CR>", { desc = "Show [E]rrors", })
 vim.keymap.set({ "n" }, "<leader>ej", ":Lspsaga diagnostic_jump_next<CR>", { desc = "Jump to next Error", })
