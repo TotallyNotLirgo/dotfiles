@@ -61,6 +61,9 @@
     phpactor
     rustaceanvim
     vim-visual-multi
+    luasnip
+    friendly-snippets
+    cmp_luasnip
     (
       nvim-treesitter.withPlugins (p: with p; [
         tree-sitter-nix
@@ -94,5 +97,6 @@
     vscode-langservers-extracted
     typescript-language-server
     typescript
+    htmx-lsp
   ];
 }

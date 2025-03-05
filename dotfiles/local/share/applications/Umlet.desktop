@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Umlet
-Comment=UML diagram editor
-Exec=umlet
-Icon=/home/emilia/.local/share/icons/umlet.svg
-Terminal=false
-Type=Application
-Categories=Office;

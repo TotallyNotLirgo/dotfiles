@@ -43,8 +43,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+
 local lspconfig = require("lspconfig")
 lspconfig.lua_ls.setup {
     settings = {
@@ -55,7 +56,8 @@ lspconfig.lua_ls.setup {
                 },
             },
         },
-    }
+    },
+    capabilities = capabilities,
 }
 lspconfig.pyright.setup {
     settings = {
@@ -70,17 +72,32 @@ lspconfig.pyright.setup {
                 }
             }
         }
-    }
+    },
+    capabilities = capabilities,
 }
-lspconfig.gopls.setup {}
-lspconfig.jdtls.setup {}
-lspconfig.phpactor.setup {}
-lspconfig.cssls.setup {}
-lspconfig.html.setup {}
+lspconfig.gopls.setup {
+    capabilities = capabilities,
+}
+lspconfig.jdtls.setup {
+    capabilities = capabilities,
+}
+lspconfig.phpactor.setup {
+    capabilities = capabilities,
+}
+lspconfig.cssls.setup {
+    capabilities = capabilities,
+}
+lspconfig.html.setup {
+    capabilities = capabilities,
+}
+lspconfig.htmx.setup {
+    capabilities = capabilities,
+}
 lspconfig.tsserver.setup {
     init_options = {
         tsserver = {
             path = "/nix/store/alw6svgjp7172h9wssjqj2gm8bi7b4zp-typescript-5.5.3/lib/node_modules/typescript/lib"
         }
     },
+    capabilities = capabilities,
 }

@@ -1,0 +1,38 @@
+general {
+        colors = true
+        interval = 1
+        color_good = "#a6da95"
+        color_degraded = "#eed49f"
+        color_bad = "#ed8796"
+}
+
+order += "disk /home"
+order += "memory"
+order += "wireless enp4s0"
+order += "tztime local"
+order += "battery 0"
+
+wireless enp4s0 {
+        format_up = "%ip"
+        format_down = "down"
+}
+
+battery 0 {
+        format = "%percentage"
+        format_percentage = "%.00f%s"
+        format_down = ""
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 30
+}
+
+tztime local {
+        format = "%H:%M:%S"
+}
+
+memory {
+        format = "%used"
+}
+
+disk "/home" {
+        format = "%free"
+}
