@@ -6,7 +6,6 @@
         brightnessctl # Screen brightness control
         playerctl # Media player control
         killall
-        blueman # Bluetooth manager
         tldr # Digestible command help
         xclip # Clipboard manager
         xsel # Clipboard manager
@@ -14,8 +13,6 @@
         nemo-with-extensions
         nemo-fileroller
         file-roller
-        wireguard-tools
-
         xorg.xinit
         xorg.xkill
         picom # Shadow and transparency
@@ -31,31 +28,13 @@
         feh
         kitty
         libsForQt5.qt5.qtgraphicaleffects
-
         vim
         ripgrep # Search tool
         fzf # Fuzzy finder
         git
-        docker
-        aseprite
         dbeaver-bin
         nix-index
-        prismlauncher
-        obs-studio
-
-        viewnior # Image viewer
-        haruna # Video player
-        drawing # Image editor
-        krita # Advanced image editor
-        libreoffice-qt-fresh
-        audacity
-        discord
-        unstable.signal-desktop
-        spotify
-        brave
         firefox
-        inkscape
-        obsidian
         keepassxc
     ];
 }

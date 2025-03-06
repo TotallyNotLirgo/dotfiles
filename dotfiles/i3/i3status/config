@@ -9,12 +9,18 @@ general {
 order += "disk /home"
 order += "memory"
 order += "wireless enp4s0"
+order += "wireless wlp1s0"
 order += "tztime local"
 order += "battery 0"
 
 wireless enp4s0 {
         format_up = "%ip"
-        format_down = "down"
+        format_down = ""
+}
+
+wireless wlp1s0 {
+        format_up = "(%essid) %ip"
+        format_down = ""
 }
 
 battery 0 {
