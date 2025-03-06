@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
     enable = true;
     globals.mapleader = " ";
@@ -118,6 +118,7 @@
         };
         which-key.enable = true;
         visual-multi.enable = true;
+        undotree.enable = true;
         lsp = {
             enable = true;
             servers = {
@@ -143,7 +144,26 @@
             };
         };
         treesitter = {
+            grammarPackages =
+                with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+                    bash
+                    go
+                    json
+                    lua
+                    make
+                    markdown
+                    nix
+                    python
+                    regex
+                    sql
+                    toml
+                    vim
+                    vimdoc
+                    xml
+                    yaml
+                ];
             enable = true;
+            settings.autoInstall = false;
             settings.indent.enable = true;
             settings.highlight.enable = true;
             luaConfig.post = ''

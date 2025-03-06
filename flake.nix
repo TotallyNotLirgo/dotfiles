@@ -54,6 +54,10 @@
           specialArgs = { inherit pkgs; };
           modules = [ ./dotfiles/nixos/chip/configuration.nix ];
         };
+        popcorn = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit pkgs; };
+          modules = [ ./dotfiles/nixos/popcorn/configuration.nix ];
+        };
       };
       homeConfigurations."emily" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

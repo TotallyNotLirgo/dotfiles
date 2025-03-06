@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     networking.networkmanager.enable = true;
@@ -37,11 +37,6 @@
     networking.firewall.enable = false;
 
     programs.xfconf.enable = true;
-    fileSystems."/mnt/home-server" = {
-        device = "//192.168.0.100/private";
-        fsType = "cifs";
-        options = [ "credentials=/home/emily/server-credentials" "nofail" ];
-    };
     services.displayManager.ly.enable = true;
     services.xserver = {
         enable = true;
