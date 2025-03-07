@@ -7,9 +7,11 @@ general {
 }
 
 order += "disk /home"
+order += "disk /nix/store"
 order += "memory"
 order += "wireless enp4s0"
 order += "wireless wlp1s0"
+order += "wireless eno2"
 order += "tztime local"
 order += "battery 0"
 
@@ -20,6 +22,11 @@ wireless enp4s0 {
 
 wireless wlp1s0 {
         format_up = "(%essid) %ip"
+        format_down = ""
+}
+
+wireless eno2 {
+        format_up = "%ip"
         format_down = ""
 }
 
@@ -40,5 +47,9 @@ memory {
 }
 
 disk "/home" {
-        format = "%free"
+        format = "~%free"
+}
+
+disk "/nix/store" {
+        format = "/%free"
 }

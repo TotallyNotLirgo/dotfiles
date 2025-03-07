@@ -41,6 +41,9 @@
         };
     };
     hardware.graphics.enable = true;
+    hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = true;
+    services.blueman.enable = true;
     services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia = {
         modesetting.enable = true;
