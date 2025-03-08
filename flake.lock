@@ -165,80 +165,12 @@
         "type": "github"
       }
     },
-    "nvim-copilot": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740172253,
-        "narHash": "sha256-DJsB+cP5qQfIKzw598HWpQeVlQbePOwrV7UN46cJ+Ms=",
-        "owner": "github",
-        "repo": "copilot.vim",
-        "rev": "cd7f01009fb7b30e22840cadc4faad88b05c6eef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "github",
-        "repo": "copilot.vim",
-        "type": "github"
-      }
-    },
-    "nvim-ftFT": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1706865934,
-        "narHash": "sha256-y3TL64lkqLWx+GoG1Pj1DSQgMnL5cwtqOP5wsXVdz8k=",
-        "owner": "gukz",
-        "repo": "ftFT.nvim",
-        "rev": "f3e43c9584e14b27f04c27a95a9d9f0e58dfec02",
-        "type": "github"
-      },
-      "original": {
-        "owner": "gukz",
-        "repo": "ftFT.nvim",
-        "type": "github"
-      }
-    },
-    "nvim-lazydev": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740044730,
-        "narHash": "sha256-LoxziiV9jlHuU4vRVFfKtVLI45ouJcuyXC6DIyQKlew=",
-        "owner": "folke",
-        "repo": "lazydev.nvim",
-        "rev": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "lazydev.nvim",
-        "type": "github"
-      }
-    },
-    "nvim-luvit-meta": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1737067389,
-        "narHash": "sha256-n6eD2CayjoKdORN9MQY3RFJEE9cOUITypV3lKowiETk=",
-        "owner": "Bilal2453",
-        "repo": "luvit-meta",
-        "rev": "1df30b60b1b4aecfebc785aa98943db6c6989716",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Bilal2453",
-        "repo": "luvit-meta",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixvim": "nixvim",
-        "nvim-copilot": "nvim-copilot",
-        "nvim-ftFT": "nvim-ftFT",
-        "nvim-lazydev": "nvim-lazydev",
-        "nvim-luvit-meta": "nvim-luvit-meta"
+        "nixvim": "nixvim"
       }
     },
     "systems": {

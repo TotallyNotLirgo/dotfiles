@@ -12,22 +12,6 @@
         url = "github:nix-community/nixvim";
         inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvim-lazydev = {
-      url = "github:folke/lazydev.nvim";
-      flake = false;
-    };
-    nvim-luvit-meta = {
-      url = "github:Bilal2453/luvit-meta";
-      flake = false;
-    };
-    nvim-copilot = {
-      url = "github:github/copilot.vim";
-      flake = false;
-    };
-    nvim-ftFT = {
-      url = "github:gukz/ftFT.nvim";
-      flake = false;
-    };
   };
 
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... } @ inputs:

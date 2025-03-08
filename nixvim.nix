@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
     enable = true;
     globals.mapleader = " ";
@@ -49,6 +49,8 @@
         { mode = [ "n" ]; key = "<leader>ej"; action = ":Lspsaga diagnostic_jump_next<CR>"; }
         { mode = [ "n" ]; key = "<leader>en"; action = ":Lspsaga diagnostic_jump_next<CR>"; }
         { mode = [ "n" ]; key = "<leader>ek"; action = ":Lspsaga diagnostic_jump_prev<CR>"; }
+        { mode = [ "n" ]; key = "<leader>f"; action = ":lua require('conform').format { async = false }<CR>"; }
+        { mode = [ "n" ]; key = "<leader>ss"; action = ":lua require('persistence').select()<CR>"; }
 
         { mode = [ "n" ]; key = "<leader>u"; action = ":UndotreeToggle<cr>"; }
 
@@ -84,6 +86,33 @@
             };
         };
     };
+    autoGroups = {
+        yankGroup = {
+            clear = true;
+        };
+    };
+    autoCmd = [
+        {
+            command = "lua vim.highlight.on_yank()";
+            group = "yankGroup";
+            event = [
+                "TextYankPost"
+            ];
+        }
+        {
+            callback = { __raw = ''
+                function()
+                    if vim.fn.argc() == 0 and not vim.g.started_with_stdin then
+                        require("persistence").select()
+                    end
+                end
+            ''; };
+            event = [
+                "VimEnter"
+            ];
+            nested = true;
+        }
+    ];
 
     colorschemes.catppuccin.enable = true;
     plugins = {
@@ -119,11 +148,14 @@
         which-key.enable = true;
         visual-multi.enable = true;
         undotree.enable = true;
+        persistence.enable = true;
         lsp = {
             enable = true;
             servers = {
                 lua_ls.enable = true;
                 nil_ls.enable = true;
+                volar.enable = true;
+                ts_ls.enable = true;
                 gopls.enable = true;
                 pyright = {
                     enable = true;
@@ -181,7 +213,7 @@
 
                     query.set("python", "injections", sql_injection_query)
                 end
-            '';
+                '';
         };
         lspkind = {
             enable = true;
@@ -274,16 +306,52 @@
             };
         };
 
-
+        conform-nvim = {
+            enable = true;
+            settings = {
+                notify_on_error = false;
+                formatters_by_ft = {
+                    lua = ["stylua"];
+                    python = ["docformatter" "isort" "black"];
+                    _ = [
+                        "trim_whitespace"
+                        "trim_newlines"
+                    ];
+                };
+                formatters = {
+                    black = {
+                        command = lib.getExe' pkgs.python312Packages.black "black";
+                        prepend_args = ["--line-length" "79"];
+                    };
+                    isort = {
+                        command = lib.getExe' pkgs.python312Packages.isort "isort";
+                        prepend_args = ["--profile" "black" "--line-length" "79"];
+                    };
+                    docformatter = {
+                        command = lib.getExe pkgs.python312Packages.docformatter;
+                        prepend_args = ["--in-place" "--pre-summary-newline"];
+                    };
+                };
+            };
+        };
         telescope = {
             enable = true;
             keymaps = {
                 "<leader>sg" = "live_grep";
                 "<leader>sf" = "find_files";
                 "<leader>sr" = "resume";
+                "<leader>sb" = "buffers";
             };
             extensions = {
-                fzf-native.enable = true;
+                fzf-native = {
+                    enable = true;
+                    settings = {
+                        fuzzy = false;
+                        override_generic_sorter = true;
+                        override_file_sorter = true;
+                        case_mode = "smart_case";
+                    };
+                };
                 ui-select.enable = true;
             };
         };

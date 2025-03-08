@@ -1,4 +1,4 @@
-{ pkgs, inputs, lib, config, xdg, ... }:
+{ pkgs, inputs, config, lib, ... }:
 let
     username = "emily";
     homeDirectory = "/home/${username}";
@@ -22,32 +22,8 @@ in
         ".Xmodmap".source = homeFiles + "/.Xmodmap";
         ".Xresources".source = homeFiles + "/.Xresources";
     };
-    programs.nixvim = import ./nixvim.nix { inherit pkgs; };
+    programs.nixvim = import ./nixvim.nix { inherit pkgs; inherit lib; };
     programs.home-manager.enable = true;
-    nixpkgs = {
-        overlays = [
-            (final: prev: {
-                vimPlugins = prev.vimPlugins // {
-                    git-lazydev = prev.vimUtils.buildVimPlugin {
-                        name = "lazydev";
-                        src = inputs.nvim-lazydev;
-                    };
-                    git-luvit-meta = prev.vimUtils.buildVimPlugin {
-                        name = "luvit-meta";
-                        src = inputs.nvim-luvit-meta;
-                    };
-                    git-copilot = prev.vimUtils.buildVimPlugin {
-                        name = "copilot";
-                        src = inputs.nvim-copilot;
-                    };
-                    git-ftFT = prev.vimUtils.buildVimPlugin {
-                        name = "ftFT";
-                        src = inputs.nvim-ftFT;
-                    };
-                };
-            })
-        ];
-    };
     programs.rofi = {
         enable = true;
         theme = dotfiles/rofi.rasi;
@@ -56,7 +32,6 @@ in
             combi-modi = "drun,run";
         };
     };
-    # programs.neovim = import ./nvim.nix { inherit pkgs; inherit inputs; };
     programs.starship = {
         enable = true;
         enableBashIntegration = true;
