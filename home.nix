@@ -11,6 +11,9 @@ in
     home.username = username;
     home.homeDirectory = homeDirectory;
     home.stateVersion = "24.11";
+    home.packages = [
+        inputs.zen-browser.packages."${pkgs.system}".default
+    ];
 
     home.file = {
         ".config/nixos".source = homeFiles + "/nixos";

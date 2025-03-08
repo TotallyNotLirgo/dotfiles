@@ -116,6 +116,7 @@
 
     colorschemes.catppuccin.enable = true;
     plugins = {
+        sleuth.enable = true;
         web-devicons.enable = true;
         gitsigns = {
             enable = true;
