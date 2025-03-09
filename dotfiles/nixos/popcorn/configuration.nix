@@ -66,7 +66,7 @@
     fileSystems."/mnt/home-server" = {
         device = "//10.165.224.1/private";
         fsType = "cifs";
-        options = ["credentials=/home/emily/home-credentials" "nofail"];
+        options = ["credentials=/home/emily/home-credentials" "nofail" "uid=emily" "gid=users"];
     };
     services.mullvad-vpn.enable = true;
     services.mullvad-vpn.package = pkgs.mullvad-vpn;

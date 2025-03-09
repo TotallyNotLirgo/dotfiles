@@ -34,7 +34,6 @@
         git
         dbeaver-bin
         nix-index
-        firefox
         keepassxc
     ];
 }
