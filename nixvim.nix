@@ -314,6 +314,7 @@
                 formatters_by_ft = {
                     lua = ["stylua"];
                     python = ["docformatter" "isort" "black"];
+                    go = ["golines"];
                     _ = [
                         "trim_whitespace"
                         "trim_newlines"
@@ -323,6 +324,10 @@
                     black = {
                         command = lib.getExe' pkgs.python312Packages.black "black";
                         prepend_args = ["--line-length" "79"];
+                    };
+                    golines = {
+                        command = lib.getExe' pkgs.golines "golines";
+                        prepend_args = ["-m" "80"];
                     };
                     isort = {
                         command = lib.getExe' pkgs.python312Packages.isort "isort";
