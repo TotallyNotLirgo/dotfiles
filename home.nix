@@ -25,7 +25,7 @@ in
         ".Xmodmap".source = homeFiles + "/.Xmodmap";
         ".Xresources".source = homeFiles + "/.Xresources";
     };
-    programs.nixvim = import ./nixvim.nix { inherit pkgs; inherit lib; };
+    programs.nixvim = import ./nixvim { inherit pkgs; inherit lib; };
     programs.home-manager.enable = true;
     programs.rofi = {
         enable = true;
