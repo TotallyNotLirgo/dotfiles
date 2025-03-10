@@ -1,6 +1,12 @@
 { pkgs, lib, ... }:
 {
     plugins = {
+        lsp-signature = {
+            enable = true;
+            settings = {
+                hint_enable = false;
+            };
+        };
         lsp = {
             enable = true;
             servers = {
