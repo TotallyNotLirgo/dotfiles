@@ -28,6 +28,10 @@
         oil = {
             enable = true;
             settings = {
+                keymaps = {
+                    "<C-l>" = false;
+                    "<C-h>" = false;
+                };
                 view_options.show_hidden = true;
             };
         };

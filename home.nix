@@ -24,6 +24,10 @@ in
         ".bashrc".source = homeFiles + "/.bashrc";
         ".Xmodmap".source = homeFiles + "/.Xmodmap";
         ".Xresources".source = homeFiles + "/.Xresources";
+        ".profile".text = ''
+          . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+          . "$HOME/.bashrc"
+        '';
     };
     programs.nixvim = import ./nixvim { inherit pkgs; inherit lib; };
     programs.home-manager.enable = true;
@@ -89,5 +93,19 @@ in
                 ssh_symbol = "󰖟";
             };
         };
+    };
+    gtk.gtk2.configLocation = "${config.home.sessionVariables.XDG_CONFIG_HOME}/gtk-2.0/gtkrc";
+    home.sessionVariables = {
+        XDG_CONFIG_HOME = "${homeDirectory}/.config";
+        XDG_DATA_HOME = "${homeDirectory}/.local/share";
+        XDG_STATE_HOME = "${homeDirectory}/.local/state";
+        XDG_CACHE_HOME = "${homeDirectory}/.cache";
+
+        CUDA_CACHE_PATH = "${config.home.sessionVariables.XDG_CACHE_HOME}/nv";
+        GOPATH = "${config.home.sessionVariables.XDG_DATA_HOME}/go";
+        WINEPREFIX = "${config.home.sessionVariables.XDG_DATA_HOME}/wine";
+        GNUPGHOME="${config.home.sessionVariables.XDG_DATA_HOME}/gnupg";
+        GTK2_RC_FILES="${config.home.sessionVariables.XDG_CONFIG_HOME}/gtk-2.0/gtkrc";
+        XCOMPOSECACHE="${config.home.sessionVariables.XDG_CACHE_HOME}/X11/xcompose";
     };
 }

@@ -29,6 +29,7 @@
         mouse.accelProfile = "flat";
         mouse.accelSpeed = "0.0";
         touchpad.naturalScrolling = true;
+        mouse.middleEmulation = false;
     };
 
     services.gvfs.enable = true;
