@@ -1,6 +1,12 @@
 { pkgs, lib, ... }:
 {
     plugins = {
+        lsp-signature = {
+            enable = true;
+            settings = {
+                hint_enable = false;
+            };
+        };
         lsp = {
             enable = true;
             servers = {
@@ -142,6 +148,7 @@
                 formatters_by_ft = {
                     lua = ["stylua"];
                     python = ["docformatter" "isort" "black"];
+                    go = ["golines"];
                     _ = [
                         "trim_whitespace"
                         "trim_newlines"
@@ -159,6 +166,10 @@
                     docformatter = {
                         command = lib.getExe pkgs.python312Packages.docformatter;
                         prepend_args = ["--in-place" "--pre-summary-newline"];
+                    };
+                    golines = {
+                        command = lib.getExe' pkgs.golines "golines";
+                        prepend_args = ["-m" "80"];
                     };
                 };
             };

@@ -3,7 +3,7 @@
     imports = [
         ./globals.nix
         ./keymaps.nix
-        ./utility-plugins.nix
+        (import ./utility-plugins.nix { inherit pkgs; })
         (import ./language-plugins.nix { inherit pkgs; inherit lib; })
     ];
 }

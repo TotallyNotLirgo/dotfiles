@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
     plugins = {
         sleuth.enable = true;
@@ -83,4 +83,24 @@
             };
         };
     };
+    extraPlugins = [
+        (pkgs.vimUtils.buildVimPlugin {
+            pname = "ftFT.nvim";
+            version = "1.0.0";
+            src = pkgs.fetchFromGitHub {
+                owner = "gukz";
+                repo = "ftFT.nvim";
+                rev = "f3e43c9584e14b27f04c27a95a9d9f0e58dfec02";
+                sha256 = "sha256-y3TL64lkqLWx+GoG1Pj1DSQgMnL5cwtqOP5wsXVdz8k";
+            };
+        })
+    ];
+    extraConfigLua = ''
+        require('ftFT').setup({
+            keys = { "f", "t", "F", "T" },
+            modes = { "n", "v" },
+            hl_group = "VisualNOS",
+            config = true
+        })
+    '';
 }

@@ -12,5 +12,8 @@
         fsType = "cifs";
         options = [ "credentials=/home/emily/server-credentials" "nofail" "uid=emily" "gid=users" ];
     };
+    environment.systemPackages = with pkgs; [
+        bruno
+    ];
 }
 
