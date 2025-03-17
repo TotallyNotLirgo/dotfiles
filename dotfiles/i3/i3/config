@@ -3,7 +3,9 @@ set $mod Mod4
 font pango:FiraCode Nerd Font Mono 12
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
-exec --no-startup-id ~/.local/bin/correct_screen
+exec --no-startup-id xsetroot -cursor_name left_ptr
+exec --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id ~/.local/bin/correct-screen
 exec --no-startup-id sleep 2 && feh --no-fehbg --bg-fill ~/catppuccin-wallpapers/landscapes/shaded_landscape.png
 exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
