@@ -35,5 +35,6 @@
         dbeaver-bin
         nix-index
         keepassxc
+        bruno
     ];
 }
