@@ -14,7 +14,10 @@
                 nil_ls.enable = true;
                 volar.enable = true;
                 ts_ls.enable = true;
-                gopls.enable = true;
+                gopls = {
+                    enable = true;
+                    settings.gopls.buildFlags = ["-tags=test"];
+                };
                 pyright = {
                     enable = true;
                     settings = {
