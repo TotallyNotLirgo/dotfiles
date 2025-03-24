@@ -40,6 +40,20 @@
             ];
         };
     };
+    nixpkgs.config.allowUnfree = true;
+    virtualisation.virtualbox = {
+        host = {
+            enable = true;
+            enableExtensionPack = true;
+        };
+        guest = {
+            enable = true;
+            dragAndDrop = true;
+            seamless = true;
+            clipboard = true;
+        };
+    };
+    users.extraGroups.vboxusers.members = [ "emily" ];
     hardware.graphics.enable = true;
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
