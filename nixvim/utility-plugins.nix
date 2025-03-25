@@ -94,6 +94,7 @@
                 sha256 = "sha256-y3TL64lkqLWx+GoG1Pj1DSQgMnL5cwtqOP5wsXVdz8k";
             };
         })
+        pkgs.vimPlugins.bigfile-nvim
     ];
     extraConfigLua = ''
         require('ftFT').setup({
@@ -102,5 +103,6 @@
             hl_group = "VisualNOS",
             config = true
         })
+        require("bigfile").setup {}
     '';
 }

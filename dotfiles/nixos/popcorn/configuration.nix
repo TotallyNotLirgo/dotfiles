@@ -12,6 +12,7 @@
         enable = true;
         enableVirtualCamera = true;
     };
+    services.tailscale.enable = true;
     networking.extraHosts =
     ''
         127.0.0.1 magentodevpl.elmark.local
@@ -78,7 +79,7 @@
         options = ["credentials=/home/emily/dit-credentials" "nofail"];
     };
     fileSystems."/mnt/home-server" = {
-        device = "//10.165.224.1/private";
+        device = "//home-server/private";
         fsType = "cifs";
         options = ["credentials=/home/emily/home-credentials" "nofail" "uid=emily" "gid=users"];
     };
@@ -96,6 +97,7 @@
         spotify
         inkscape
         obsidian
+        brave
     ];
 }
 
