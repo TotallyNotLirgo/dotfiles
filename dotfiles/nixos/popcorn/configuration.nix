@@ -8,6 +8,7 @@
     networking.hostName = "popcorn";
     system.stateVersion = "24.05";
 
+    programs.steam.enable = true;
     programs.obs-studio = {
         enable = true;
         enableVirtualCamera = true;
@@ -76,7 +77,7 @@
     fileSystems."/mnt/elmark" = {
         device = "//192.168.5.9/DIT";
         fsType = "cifs";
-        options = ["credentials=/home/emily/dit-credentials" "nofail"];
+        options = ["credentials=/home/emily/dit-credentials" "nofail" "uid=emily" "gid=users"];
     };
     fileSystems."/mnt/home-server" = {
         device = "//home-server/private";

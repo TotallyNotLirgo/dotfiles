@@ -82,6 +82,7 @@
                 ui-select.enable = true;
             };
         };
+        nui.enable = true;
     };
     extraPlugins = [
         (pkgs.vimUtils.buildVimPlugin {
@@ -95,6 +96,16 @@
             };
         })
         pkgs.vimPlugins.bigfile-nvim
+        (pkgs.vimUtils.buildVimPlugin {
+            pname = "pymple.nvim";
+            version = "0.4.1";
+            src = pkgs.fetchFromGitHub {
+                owner = "alexpasmantier";
+                repo = "pymple.nvim";
+                rev = "110cc9499b89f2b7230a0c3a7332b3e4b1ac5b7b";
+                sha256 = "sha256-lo2bEOC7iDsTZtEb2tVT+lAPEr/gL3ORNX3mr962S/s=";
+            };
+        })
     ];
     extraConfigLua = ''
         require('ftFT').setup({
@@ -103,6 +114,7 @@
             hl_group = "VisualNOS",
             config = true
         })
-        require("bigfile").setup {}
+        require("pymple").setup()
+        require("bigfile").setup({})
     '';
 }
