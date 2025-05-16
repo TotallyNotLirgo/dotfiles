@@ -3,16 +3,20 @@ let
     username = "emily";
     homeDirectory = "/home/${username}";
     homeFiles = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/.config/dotfiles/dotfiles";
+    gripgrab = import ./gripgrab.nix { inherit pkgs; };
 in
 {
     imports = [
         inputs.nixvim.homeManagerModules.nixvim
     ];
+    services.amberol.enable = true;
     home.username = username;
     home.homeDirectory = homeDirectory;
     home.stateVersion = "24.11";
     home.packages = [
         inputs.zen-browser.packages."${pkgs.system}".default
+        pkgs.fd
+        gripgrab
     ];
 
     home.file = {

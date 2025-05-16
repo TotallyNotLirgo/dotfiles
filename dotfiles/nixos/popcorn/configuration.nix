@@ -8,10 +8,12 @@
     networking.hostName = "popcorn";
     system.stateVersion = "24.05";
 
+    programs.steam.enable = true;
     programs.obs-studio = {
         enable = true;
         enableVirtualCamera = true;
     };
+    services.tailscale.enable = true;
     networking.extraHosts =
     ''
         127.0.0.1 magentodevpl.elmark.local
@@ -40,6 +42,20 @@
             ];
         };
     };
+    nixpkgs.config.allowUnfree = true;
+    virtualisation.virtualbox = {
+        host = {
+            enable = true;
+            enableExtensionPack = true;
+        };
+        guest = {
+            enable = true;
+            dragAndDrop = true;
+            seamless = true;
+            clipboard = true;
+        };
+    };
+    users.extraGroups.vboxusers.members = [ "emily" ];
     hardware.graphics.enable = true;
     hardware.bluetooth.enable = true;
     hardware.bluetooth.powerOnBoot = true;
@@ -61,10 +77,10 @@
     fileSystems."/mnt/elmark" = {
         device = "//192.168.5.9/DIT";
         fsType = "cifs";
-        options = ["credentials=/home/emily/dit-credentials" "nofail"];
+        options = ["credentials=/home/emily/dit-credentials" "nofail" "uid=emily" "gid=users"];
     };
     fileSystems."/mnt/home-server" = {
-        device = "//10.165.224.1/private";
+        device = "//home-server/private";
         fsType = "cifs";
         options = ["credentials=/home/emily/home-credentials" "nofail" "uid=emily" "gid=users"];
     };
@@ -82,6 +98,7 @@
         spotify
         inkscape
         obsidian
+        brave
     ];
 }
 
