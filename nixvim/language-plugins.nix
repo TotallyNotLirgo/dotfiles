@@ -14,6 +14,8 @@
                 nil_ls.enable = true;
                 volar.enable = true;
                 ts_ls.enable = true;
+                svelte.enable = true;
+                clangd.enable = true;
                 gopls = {
                     enable = true;
                     settings.gopls.buildFlags = ["-tags=test"];
@@ -54,6 +56,12 @@
                     vimdoc
                     xml
                     yaml
+                    svelte
+                    typescript
+                    javascript
+                    css
+                    html
+                    c
                 ];
             enable = true;
             settings.autoInstall = false;

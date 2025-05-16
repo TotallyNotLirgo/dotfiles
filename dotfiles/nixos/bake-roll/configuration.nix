@@ -12,10 +12,17 @@
     services.mullvad-vpn.enable = true;
     services.mullvad-vpn.package = pkgs.mullvad-vpn;
     programs.steam.enable = true;
-    virtualisation.vmware.host.enable = true;
+    programs.thunderbird.enable = true;
+    virtualisation.virtualbox = {
+        host.enable = true;
+        host.enableExtensionPack = true;
+        guest.enable = true;
+        guest.dragAndDrop = true;
+    };
+
 
     hardware.graphics.enable = true;
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = ["nvidia" ];
     hardware.nvidia = {
         modesetting.enable = true;
         powerManagement.enable = false;
@@ -35,10 +42,18 @@
         libreoffice-qt-fresh
         audacity
         discord
-        unstable.signal-desktop
+        unstable.signal-desktop-bin
         spotify
         inkscape
         obsidian
+        unstable.vintagestory
+        unstable.dotnet-runtime_7
+        vpnc
+        networkmanager-vpnc
+        android-tools
+        heimdall
+        heimdall-gui
+        telegram-desktop
     ];
     fileSystems."/mnt/home-server" = {
         device = "//192.168.0.100/private";
@@ -46,4 +61,3 @@
         options = [ "credentials=/home/emily/server-credentials" "nofail" "uid=emily" "gid=users"];
     };
 }
-

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
     imports = [
@@ -23,7 +23,7 @@
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     environment.sessionVariables = {
-        LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
+        LD_LIBRARY_PATH = "";
         GTK_THEME = "Dracula";
     };
 }

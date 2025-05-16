@@ -35,6 +35,7 @@
     services.gvfs.enable = true;
     services.tumbler.enable = true;
     services.openssh.enable = true;
+    services.x2goserver.enable = true;
     networking.firewall.enable = false;
 
     programs.xfconf.enable = true;

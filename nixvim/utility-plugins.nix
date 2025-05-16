@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
     plugins = {
-        sleuth.enable = true;
+        diffview.enable = true;
         web-devicons.enable = true;
         gitsigns = {
             enable = true;
