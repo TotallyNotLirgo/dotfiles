@@ -36,7 +36,7 @@
                     publicKey = "DAT4V2Z8cTT7PGGE53K15iaeWU6E+VYxZmDi+Go0mkQ=";
 
                     allowedIPs = [ "10.165.224.0/24" ];
-                    endpoint = "77.254.8.15:51820";
+                    endpoint = "78.11.241.62:51820";
                     persistentKeepalive = 25;
                 }
             ];
@@ -86,6 +86,8 @@
     };
     services.mullvad-vpn.enable = true;
     services.mullvad-vpn.package = pkgs.mullvad-vpn;
+    hardware.keyboard.qmk.enable = true;
+    services.udev.packages = [ pkgs.via ];
     environment.systemPackages = with pkgs; [
         viewnior
         haruna
@@ -99,6 +101,8 @@
         inkscape
         obsidian
         brave
+        moonlight-qt
+        via
     ];
 }
 
