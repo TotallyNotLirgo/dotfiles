@@ -19,6 +19,7 @@
         isNormalUser = true;
         extraGroups = [ "wheel" "docker" ];
     };
+    xdg.terminal-exec.enable = true;
 
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];

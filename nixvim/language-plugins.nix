@@ -7,6 +7,7 @@
                 hint_enable = false;
             };
         };
+        friendly-snippets.enable = true;
         lsp = {
             enable = true;
             servers = {
@@ -14,6 +15,7 @@
                 nil_ls.enable = true;
                 volar.enable = true;
                 ts_ls.enable = true;
+                html.enable = true;
                 svelte.enable = true;
                 clangd.enable = true;
                 gopls = {
@@ -120,6 +122,7 @@
                 Copilot = "  ";
             };
         };
+        luasnip.enable = true;
         cmp = {
             enable = true;
             autoEnableSources = true;

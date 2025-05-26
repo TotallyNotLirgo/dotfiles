@@ -25,6 +25,8 @@ in
         ".config/i3status".source = homeFiles + "/i3/i3status";
         ".config/picom".source = homeFiles + "/picom";
         ".config/kitty".source = homeFiles + "/kitty";
+        ".config/mimeapps.list".source = homeFiles + "/mimeapps.list";
+        ".local/share/applications/nvim.desktop".source = homeFiles + "/applications/nvim.desktop";
         ".bashrc".source = homeFiles + "/.bashrc";
         ".Xmodmap".source = homeFiles + "/.Xmodmap";
         ".Xresources".source = homeFiles + "/.Xresources";
@@ -35,6 +37,9 @@ in
     };
     programs.nixvim = import ./nixvim { inherit pkgs; inherit lib; };
     programs.home-manager.enable = true;
+    home.sessionVariables = {
+        TERMINAL = "kitty";
+    };
     programs.rofi = {
         enable = true;
         theme = dotfiles/rofi.rasi;
