@@ -1,0 +1,121 @@
+// -*- mode: jsonc -*-
+
+{
+    "height": 30,
+    "modules-left": [
+        "hyprland/workspaces",
+        "custom/sep",
+        "hyprland/window"
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "mpris",
+        "custom/sep",
+        "pulseaudio",
+        "custom/sep",
+        "network",
+        "custom/sep",
+        "clock",
+        "custom/sep",
+        "tray"
+    ],
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10,
+        "cursor": 58
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 80,
+        "rewrite": {
+            "": "hyprland"
+        },
+        "separate-outputs": true
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "*": 5
+        },
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "empty": ""
+        }
+    },
+    "clock": {
+        "format": "{:%H:%M:%S}",
+        "interval": 1,
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "network": {
+        "format": "{icon} {ipaddr}",
+        "format-disconnected": "{icon} No Internet",
+        "format-linked": "{icon}  {ifname} (no IP)",
+        "format-alt": "{icon} {bandwidthUpBytes} | {bandwidthDownBytes}",
+        "tooltip-format": "{icon} {ifname}: {ipaddr}/{cidr}  {gwaddr}",
+        "tooltip-format-wifi": "{wifiIcon} {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{icon} {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "{icon} disconnected",
+        "on-click-right": "nm-connection-editor",
+        "format-icons": {
+            "ethernet": "󰈀",
+            "disconnected": "",
+            "wifi": [
+                "",
+                ""
+            ]
+        },
+        "interval": 2
+    }
+
+
+    ,
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": "󰖁  {volume}%",
+        "format-muted": "󰖁 {volume}%",
+        "format-icons": {
+            "default": [
+                "󰕿",
+                "󰖀",
+                "󰕾"
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "$XDG_CONFIG_HOME/waybar/change_sink.sh",
+        "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+    "mpris": {
+        "format": " {dynamic}",
+        "title-len": 50,
+        "artist-len": 20,
+        "dynamic-order": ["title", "artist"]
+    },
+    "custom/sep": {
+        "format": "|",
+        "tooltip": false
+    }
+}

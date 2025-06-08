@@ -1,8 +1,8 @@
 * {
-    bg0:    #2E3440F2;
+    bg0:    #2E3440;
     bg1:    #3B4252;
-    bg2:    #4C566A80;
-    bg3:    #88C0D0F2;
+    bg2:    #4C566A;
+    bg3:    #88C0D0;
     fg0:    #D8DEE9;
     fg1:    #ECEFF4;
     fg2:    #D8DEE9;
@@ -52,6 +52,7 @@ prompt {
 entry {
     placeholder:        "Search";
     placeholder-color:  @fg3;
+    text-color:         @fg2;
 }
 
 message {
@@ -72,6 +73,8 @@ listview {
     lines:      8;
     columns:    1;
 
+    border: 0;
+
     fixed-height: false;
 }
 
@@ -81,16 +84,14 @@ element {
     border-radius:  16px;
 }
 
-element normal active {
-    text-color: @bg3;
-}
-
-element alternate active {
-    text-color: @bg3;
+element normal normal, element alternate normal {
+    background-color:   @bg1;
+    text-color:         @fg2;
 }
 
 element selected normal, element selected active {
     background-color:   @bg3;
+    text-color:         @bg1;
 }
 
 element-icon {
@@ -104,4 +105,10 @@ element-text {
 
 element selected {
     text-color: @bg1;
+}
+
+scrollbar {
+    handle-color: @bg3;
+    handle-rounded-corners: true;
+    margin: 0 0 0 8px;
 }

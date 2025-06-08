@@ -17,22 +17,18 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-PATH="$PATH:~/.local/bin:/usr/local/go/bin"
+PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin"
 export EDITOR='nvim'
 
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
-function cds() {
+function cdp() {
     if [[ $# -eq 1 ]]; then
         cd "$1"
     fi
-    if [[ -d ./shell ]]; then
-        cd ./shell
-        nix develop
-        cd ..
-    elif [[ -f ./flake.nix ]]; then
-        nix develop
+    if [[ -d ./.venv ]]; then
+        source .venv/bin/activate
     fi
 }
 
@@ -44,5 +40,11 @@ alias ":qa!"="exit"
 alias ":wqa"="exit"
 
 alias nixos-reload="home-manager switch; sudo nixos-rebuild switch"
+
+CARGO_HOME="$HOME/.cargo"
+case ":$PATH:" in
+  *":$CARGO_HOME/bin:"*) ;;
+  *) export PATH="$CARGO_HOME/bin:$PATH" ;;
+esac
 
 eval "$(starship init bash)"
