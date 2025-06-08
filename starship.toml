@@ -9,6 +9,7 @@ symbol = " "
 
 [git_status]
 format = "[\\[$untracked$modified$deleted$ahead_behind\\]]($style) "
+ignore_submodules = true
 modified = "~$count"
 untracked = "+$count"
 deleted = "-$count"
