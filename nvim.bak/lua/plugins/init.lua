@@ -1,0 +1,95 @@
+return {
+    {
+        'catppuccin/nvim',
+        version = false,
+        lazy = false,
+        priority = 1000,
+        config = function() vim.cmd.colorscheme('catppuccin') end
+    },
+    'tpope/vim-sleuth',
+    'mbbill/undotree',
+    "RRethy/vim-illuminate",
+    "mg979/vim-visual-multi",
+    { "nvim-tree/nvim-web-devicons", opts = {}, },
+    { 'vidocqh/auto-indent.nvim',    opts = {}, },
+    { "j-hui/fidget.nvim",           opts = {}, },
+    { 'windwp/nvim-autopairs',       opts = {} },
+    { 'kylechui/nvim-surround',      opts = {} },
+    { "folke/trouble.nvim",          opts = {}, cmd = "Trouble" },
+    { "folke/persistence.nvim",      opts = {}, event = "BufReadPre", },
+    { 'folke/which-key.nvim',        opts = {}, event = 'VimEnter', },
+    {
+        "gukz/ftFT.nvim",
+        keys = { "f", "t", "F", "T" },
+        modes = { "n", "v" },
+        hl_group = "VisualNOS",
+        config = true,
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        opts = {
+            scope = { enabled = false }
+        },
+        main = "ibl",
+    },
+    {
+        "alexpasmantier/pymple.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "stevearc/dressing.nvim",
+            "nvim-tree/nvim-web-devicons",
+        },
+        build = ":PympleBuild",
+        config = function()
+            require("pymple").setup()
+        end,
+    },
+    {
+        'norcalli/nvim-colorizer.lua',
+        config = function()
+            require('colorizer').setup()
+        end
+    },
+    {
+        'stevearc/oil.nvim',
+        config = function()
+            require('oil').setup()
+        end
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        opts = {
+            sections = {
+                lualine_b = { "diagnostics" },
+                lualine_c = {
+                    {
+                        "filename",
+                        file_status = true,
+                        path = 1,
+                        symbols = {
+                            modified = "",
+                            readonly = "",
+                            unnamed = "[No Name]"
+                        }
+                    }
+                },
+                lualine_x = { "filetype" },
+                lualine_y = {}
+            }
+        }
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        opts = {
+            signs = {
+                add = { text = '+' },
+                change = { text = '~' },
+                delete = { text = '_' },
+                topdelete = { text = '‾' },
+                changedelete = { text = '~' },
+                untracked = { text = 'U' }
+            },
+        },
+    }
+}
