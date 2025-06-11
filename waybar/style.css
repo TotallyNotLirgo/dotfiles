@@ -100,7 +100,7 @@ tooltip {
 }
 
 .modules-left {
-    padding: 0 10px;
+    padding: 0 0px;
 }
 
 .modules-center {
@@ -116,9 +116,14 @@ tooltip {
 }
 
 #custom-sep {
-    padding: 0 10px;
+    padding: 0 5px;
     font-weight: bold;
     color: @s1;
+}
+#custom-power {
+    padding: 0 10px;
+    font-weight: bold;
+    color: @pink;
 }
 #tray menu {
     background-color: @s0;

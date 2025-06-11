@@ -3,6 +3,8 @@
 {
     "height": 30,
     "modules-left": [
+        "custom/power",
+        "custom/sep",
         "hyprland/workspaces",
         "custom/sep",
         "hyprland/window"
@@ -116,6 +118,11 @@
     },
     "custom/sep": {
         "format": "|",
+        "tooltip": false
+    },
+    "custom/power": {
+        "format": "",
+        "on-click": "$XDG_CONFIG_HOME/waybar/powermenu.sh",
         "tooltip": false
     }
 }

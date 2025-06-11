@@ -35,7 +35,7 @@ local servers = {
         settings = {
             python = {
                 analysis = {
-                    autoSearchPaths = true;
+                    autoSearchPaths = true,
                     diagnosticMode = "workspace",
                     useLibraryCodeForTypes = true,
                     typeCheckingMode = "basic",
@@ -52,3 +52,12 @@ for server_name in pairs(servers) do
     vim.lsp.config[server_name] = servers[server_name]
     vim.lsp.enable(server_name)
 end
+vim.keymap.set(
+    { "n" },
+    "<leader>r",
+    function()
+        for server_name in pairs(servers) do
+            vim.lsp.enable(server_name, false)
+            vim.lsp.enable(server_name, true)
+        end
+end);
