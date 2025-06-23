@@ -3,11 +3,18 @@ return {
     dependencies = { 'rafamadriz/friendly-snippets' },
     version = '1.*',
     opts = {
-        keymap = { preset = 'default' },
+        keymap = {
+            preset = 'default',
+            ['<Up>'] = { 'select_prev', 'fallback' },
+            ['<Down>'] = { 'select_next', 'fallback' },
+        },
         appearance = {
             nerd_font_variant = 'mono'
         },
-        completion = { documentation = { auto_show = true } },
+        completion = {
+            documentation = { auto_show = true },
+            trigger = { show_on_insert = true }
+        },
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
         },

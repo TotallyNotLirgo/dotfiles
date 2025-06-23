@@ -12,6 +12,7 @@ application/x-extension-xht=zen.desktop
 x-scheme-handler/tg=org.telegram.desktop.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
 inode/directory=nemo.desktop
+x-scheme-handler/bruno=bruno.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen.desktop;firefox.desktop;userapp-Zen-K6U722.desktop;

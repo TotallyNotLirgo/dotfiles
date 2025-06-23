@@ -17,7 +17,7 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin"
+PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin:$XDG_DATA_HOME/go/bin"
 export EDITOR='nvim'
 
 bind '"\e[A":history-search-backward'

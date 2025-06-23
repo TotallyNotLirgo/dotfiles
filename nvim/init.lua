@@ -22,6 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({ { import = 'plugins' } }, {})
 require('lsp')
+require('injections')
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function ()

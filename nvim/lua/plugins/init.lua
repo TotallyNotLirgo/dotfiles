@@ -7,17 +7,24 @@ return {
         config = function() vim.cmd.colorscheme('catppuccin') end
     },
     'tpope/vim-sleuth',
+    'tpope/vim-abolish',
     'mbbill/undotree',
     "RRethy/vim-illuminate",
     "mg979/vim-visual-multi",
-    { "nvim-tree/nvim-web-devicons", opts = {}, },
-    { 'vidocqh/auto-indent.nvim',    opts = {}, },
-    { "j-hui/fidget.nvim",           opts = {}, },
+    { "j-hui/fidget.nvim",           opts = {} },
     { 'windwp/nvim-autopairs',       opts = {} },
     { 'kylechui/nvim-surround',      opts = {} },
+    { "nvim-tree/nvim-web-devicons", opts = {} },
     { "folke/trouble.nvim",          opts = {}, cmd = "Trouble" },
-    { "folke/persistence.nvim",      opts = {}, event = "BufReadPre", },
-    { 'folke/which-key.nvim',        opts = {}, event = 'VimEnter', },
+    { "folke/persistence.nvim",      opts = {}, event = "BufReadPre" },
+    { 'folke/which-key.nvim',        opts = {}, event = 'VimEnter' },
+    {
+        "ray-x/lsp_signature.nvim",
+        opts = {
+            hint_enable = false
+        },
+        event = "InsertEnter"
+    },
     {
         "gukz/ftFT.nvim",
         keys = { "f", "t", "F", "T" },
@@ -31,6 +38,18 @@ return {
             scope = { enabled = false }
         },
         main = "ibl",
+    },
+    {
+        'vidocqh/auto-indent.nvim',
+        opts = {
+            indentexpr = function(lnum)
+                local denum = 1
+                if vim.bo.filetype == 'go' then
+                    denum = 4
+                end
+                return require("nvim-treesitter.indent").get_indent(lnum) / denum
+            end
+        },
     },
     {
         "alexpasmantier/pymple.nvim",
