@@ -14,7 +14,7 @@
 * {
     all: unset;
     font-size: 16px;
-    font-family: 'FiraCode Nerd Font Mono', monospace;
+    font-family: 'CaskaydiaMono Nerd Font Mono', monospace;
 }
 
 window#waybar {
