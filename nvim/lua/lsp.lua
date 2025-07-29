@@ -14,6 +14,25 @@ local servers = {
             }
         }
     },
+    svelte = {
+        cmd = { 'svelteserver', '--stdio' },
+        settings = {
+            -- svelte.plugin.svelte.format.config.svelteIndentScriptAndStyle
+            svelte = {
+                plugin = {
+                    svelte = {
+                        format= {
+                            config = {
+                                svelteIndentScriptAndStyle = false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        filetypes = { 'svelte' },
+        root_markers = { 'package.json', '.git' }
+    },
     typescript = {
         cmd = { 'typescript-language-server', '--stdio' },
         filetypes = { 'typescript', 'javascript' },
