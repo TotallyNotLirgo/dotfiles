@@ -1,10 +1,15 @@
 return {
     {
-        'catppuccin/nvim',
-        version = false,
-        lazy = false,
-        priority = 1000,
-        config = function() vim.cmd.colorscheme('catppuccin') end
+        "rose-pine/neovim",
+        name = "rose-pine",
+        config = function()
+            require("rose-pine").setup({
+                styles = {
+                    italic = false
+                }
+            })
+            vim.cmd("colorscheme rose-pine-moon")
+        end
     },
     'tpope/vim-sleuth',
     'tpope/vim-abolish',
@@ -40,19 +45,8 @@ return {
         main = "ibl",
     },
     {
-        'vidocqh/auto-indent.nvim',
-        opts = {
-            indentexpr = function(lnum)
-                local denum = 1
-                if vim.bo.filetype == 'go' then
-                    denum = 4
-                end
-                return require("nvim-treesitter.indent").get_indent(lnum) / denum
-            end
-        },
-    },
-    {
         "alexpasmantier/pymple.nvim",
+        filetypes = { "python" },
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",

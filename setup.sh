@@ -7,14 +7,9 @@ symlink() {
 }
 
 symlink ".bashrc" ""
-symlink "dunst" ".config"
-symlink "hypr" ".config"
 symlink "kitty" ".config"
 symlink "nvim" ".config"
-symlink "rofi" ".config"
-symlink "waybar" ".config"
 symlink "mimeapps.list" ".config"
 symlink "starship.toml" ".config"
-symlink "nwg-dock-hyprland" ".config"
 symlink "applications/nvim.desktop" ".local/share/applications"
 
