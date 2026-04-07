@@ -30,13 +30,6 @@ return {
         config = true,
     },
     {
-        "lukas-reineke/indent-blankline.nvim",
-        opts = {
-            scope = { enabled = false }
-        },
-        main = "ibl",
-    },
-    {
         "alexpasmantier/pymple.nvim",
         filetypes = { "python" },
         dependencies = {

@@ -12,14 +12,6 @@ return {
             _ = { lsp_format = "fallback" },
         },
         formatters = {
-            isort = {
-                command = "isort",
-                prepend_args = { "--profile", "black", "--line-length", "79" },
-            },
-            docformatter = {
-                command = "docformatter",
-                prepend_args = { "--in-place", "--pre-summary-newline" },
-            },
             golines = {
                 command = "golines",
                 prepend_args = { "-m", "80" },

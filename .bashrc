@@ -4,8 +4,9 @@ case $- in
 esac
 
 HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=100000
+HISTFILESIZE=200000
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 shopt -s histappend
 shopt -s checkwinsize
