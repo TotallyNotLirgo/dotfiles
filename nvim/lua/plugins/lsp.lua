@@ -34,7 +34,7 @@ return {
                             useLibraryCodeForTypes = true,
                             typeCheckingMode = "basic",
                             diagnosticSeverityOverrides = {
-                                reportInvalidTypeForm = "none",
+                                reportMissingTypeStubs = "none",
                             },
                         },
                     },

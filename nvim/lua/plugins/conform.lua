@@ -3,19 +3,11 @@ return {
     opts = {
         notify_on_error = false,
         formatters_by_ft = {
-            python = { "docformatter", "isort", "black" },
+            python = { "docformatter", "ruff_organize_imports", "ruff_format" },
             go = { "golines" },
             _ = { lsp_format = "fallback" },
         },
         formatters = {
-            black = {
-                command = "black",
-                prepend_args = { "--line-length", "79" },
-            },
-            isort = {
-                command = "isort",
-                prepend_args = { "--profile", "black", "--line-length", "79" },
-            },
             docformatter = {
                 command = "docformatter",
                 prepend_args = { "--in-place", "--pre-summary-newline" },

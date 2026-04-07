@@ -24,25 +24,11 @@ return {
     { "folke/persistence.nvim",      opts = {}, event = "BufReadPre" },
     { 'folke/which-key.nvim',        opts = {}, event = 'VimEnter' },
     {
-        "ray-x/lsp_signature.nvim",
-        opts = {
-            hint_enable = false
-        },
-        event = "InsertEnter"
-    },
-    {
         "gukz/ftFT.nvim",
         keys = { "f", "t", "F", "T" },
         modes = { "n", "v" },
         hl_group = "VisualNOS",
         config = true,
-    },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        opts = {
-            scope = { enabled = false }
-        },
-        main = "ibl",
     },
     {
         "alexpasmantier/pymple.nvim",
