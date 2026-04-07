@@ -25,6 +25,7 @@ return {
             gopls = {},
             phpactor = {},
             rust_analyzer = {},
+            glsl_analyzer = {},
             pyright = {
                 settings = {
                     python = {

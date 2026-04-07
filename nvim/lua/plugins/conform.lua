@@ -3,15 +3,15 @@ return {
     opts = {
         notify_on_error = false,
         formatters_by_ft = {
-            python = { "docformatter", "isort", "black" },
+            python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
             go = { "golines" },
+            vue = { "prettier" },
+            javascript = { "prettier" },
+            typescript = { "prettier" },
+            css = { "prettier" },
             _ = { lsp_format = "fallback" },
         },
         formatters = {
-            black = {
-                command = "black",
-                prepend_args = { "--line-length", "79" },
-            },
             isort = {
                 command = "isort",
                 prepend_args = { "--profile", "black", "--line-length", "79" },

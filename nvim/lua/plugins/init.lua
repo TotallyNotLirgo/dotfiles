@@ -11,7 +11,6 @@ return {
             vim.cmd("colorscheme rose-pine-moon")
         end
     },
-    'tpope/vim-sleuth',
     'tpope/vim-abolish',
     'mbbill/undotree',
     "RRethy/vim-illuminate",
@@ -23,13 +22,6 @@ return {
     { "folke/trouble.nvim",          opts = {}, cmd = "Trouble" },
     { "folke/persistence.nvim",      opts = {}, event = "BufReadPre" },
     { 'folke/which-key.nvim',        opts = {}, event = 'VimEnter' },
-    {
-        "ray-x/lsp_signature.nvim",
-        opts = {
-            hint_enable = false
-        },
-        event = "InsertEnter"
-    },
     {
         "gukz/ftFT.nvim",
         keys = { "f", "t", "F", "T" },
@@ -57,12 +49,6 @@ return {
         config = function()
             require("pymple").setup()
         end,
-    },
-    {
-        'norcalli/nvim-colorizer.lua',
-        config = function()
-            require('colorizer').setup()
-        end
     },
     {
         'stevearc/oil.nvim',

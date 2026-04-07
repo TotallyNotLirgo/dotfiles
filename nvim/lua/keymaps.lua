@@ -22,6 +22,7 @@ local keymaps = {
     { n,    "gr",          ":Telescope lsp_references<CR>" },
     { n,    "<F2>",        vim.lsp.buf.rename },
     { n,    "K",           function() vim.lsp.buf.hover({ border = "rounded" }) end },
+    { n,    "<leader>er",  function() vim.lsp.buf.code_action() end },
     { n,    "<leader>ee",  function() vim.diagnostic.open_float({ border = "rounded" }) end },
     { n,    "<leader>en",  function() vim.diagnostic.jump({ count = 1, float = { border = "rounded" } }) end },
     { n,    "<leader>ep",  function() vim.diagnostic.jump({ count = -1, float = { border = "rounded" } }) end },

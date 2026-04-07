@@ -48,3 +48,12 @@ case ":$PATH:" in
 esac
 
 eval "$(starship init bash)"
+
+# pnpm
+export PNPM_HOME="/home/emily/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
