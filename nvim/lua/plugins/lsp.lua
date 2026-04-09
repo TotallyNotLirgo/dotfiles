@@ -27,6 +27,7 @@ return {
             rust_analyzer = {},
             glsl_analyzer = {},
             pyright = {
+                --- @type lspconfig.settings.pyright
                 settings = {
                     python = {
                         analysis = {

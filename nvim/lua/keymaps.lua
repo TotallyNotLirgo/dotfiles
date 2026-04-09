@@ -40,6 +40,7 @@ vim.keymap.del('n', 'gra')
 vim.keymap.del('n', 'grt')
 vim.keymap.del('n', 'grr')
 vim.keymap.del('n', 'gri')
+vim.keymap.del('n', 'grx')
 for _, keymap in ipairs(keymaps) do
     vim.keymap.set(keymap[1], keymap[2], keymap[3], keymap[4] or {});
 end
