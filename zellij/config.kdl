@@ -1,0 +1,51 @@
+keybinds clear-defaults=true {
+    normal {
+        bind "Alt Shift h" { MoveTab "left"; }
+        bind "Alt Shift l" { MoveTab "right"; }
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" { GoToTab 2; }
+        bind "Alt 3" { GoToTab 3; }
+        bind "Alt 4" { GoToTab 4; }
+        bind "Alt 5" { GoToTab 5; }
+        bind "Alt 6" { GoToTab 6; }
+        bind "Alt 7" { GoToTab 7; }
+        bind "Alt 8" { GoToTab 8; }
+        bind "Alt 9" { GoToTab 9; }
+        bind "Alt h" { MoveFocus "left"; }
+        bind "Alt j" { MoveFocus "down"; }
+        bind "Alt k" { MoveFocus "up"; }
+        bind "Alt l" { MoveFocus "right"; }
+        bind "Alt s" { NewPane "down"; }
+        bind "Alt w" { NewPane "right"; }
+        bind "Alt q" { CloseFocus; }
+        bind "Alt Shift q" { Quit; }
+        bind "Ctrl t" { NewTab; }
+    }
+}
+
+plugins {
+    about location="zellij:about"
+    compact-bar location="zellij:compact-bar"
+    configuration location="zellij:configuration"
+    filepicker location="zellij:strider" {
+        cwd "/"
+    }
+    plugin-manager location="zellij:plugin-manager"
+    session-manager location="zellij:session-manager"
+    status-bar location="zellij:status-bar"
+    strider location="zellij:strider"
+    tab-bar location="zellij:tab-bar"
+    welcome-screen location="zellij:session-manager" {
+        welcome_screen true
+    }
+}
+theme "catppuccin-macchiato"
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
+
+pane_frames false
+copy_command "wl-copy"
+show_startup_tips false

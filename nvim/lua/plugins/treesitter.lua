@@ -21,6 +21,7 @@ return {
             "svelte",
             "typescript",
             "javascript",
+            "gdscript",
             "css",
             "html",
             "c",

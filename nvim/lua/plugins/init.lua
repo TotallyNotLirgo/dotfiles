@@ -53,6 +53,13 @@ return {
                 },
                 view_options = {
                     show_hidden = true,
+                    is_always_hidden = function(name, _)
+                        return require("godot").is_godot_project
+                            and (
+                                vim.endswith(name, ".uid")
+                                or name == "server.pipe"
+                            )
+                    end,
                 }
             })
         end

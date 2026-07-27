@@ -20,13 +20,22 @@ return {
             },
             cssls = {},
             html = {},
+            ols = {},
             svelte = {},
             ts_ls = {},
             gopls = {},
             phpactor = {},
             rust_analyzer = {},
             glsl_analyzer = {},
+            gdscript = {},
             pyright = {
+                capabilities = {
+                    textDocument = {
+                        diagnostic = {
+                            dynamicRegistration = false
+                        },
+                    },
+                },
                 --- @type lspconfig.settings.pyright
                 settings = {
                     python = {

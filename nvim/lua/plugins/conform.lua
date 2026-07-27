@@ -5,6 +5,7 @@ return {
         formatters_by_ft = {
             python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
             go = { "golines" },
+            odin = { "odinfmt" },
             vue = { "prettier" },
             javascript = { "prettier" },
             typescript = { "prettier" },

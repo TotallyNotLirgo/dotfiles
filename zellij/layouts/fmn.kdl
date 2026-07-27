@@ -1,0 +1,24 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+    }
+    cwd "/home/emily/projects/fmn/"
+    tab name="code" cwd="backend" {
+        pane {
+            command "bash"
+            args "-c" "source .venv/bin/activate; nvim .; exec bash"
+        }
+    }
+    tab name="backend" {
+        pane {
+            command "bash"
+            args "-c" "./start.sh; exec bash"
+        }
+        pane {
+            command "bash"
+        }
+    }
+}

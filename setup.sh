@@ -8,6 +8,7 @@ symlink() {
 
 symlink ".bashrc" ""
 symlink "kitty" ".config"
+symlink "zellij" ".config"
 symlink "nvim" ".config"
 symlink "mimeapps.list" ".config"
 symlink "starship.toml" ".config"
